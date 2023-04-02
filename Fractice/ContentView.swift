@@ -8,12 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {    
-    var fraction = generateFraction()
+    var fraction1 = generateFraction()
+    var fraction2 = generateFraction()
+    
+    var answer:Bool = checkAnswer(
+        userAnswer: 5/6,
+        operand: Operand.plus,
+        f1: 2/6,
+        f2: 3/6
+    )
+    
+    
     
     var body: some View {
         VStack {
-            Text("numerator: \(fraction.numerator)")
-            Text("denominator: \(fraction.denominator)")
+            Text("numerator: \(fraction1.numerator)")
+            Text("denominator: \(fraction2.denominator)")
+            
+            if answer {
+                Text("Correct")
+            } else {
+                Text("Wrong")
+            }
         }
     }
 }
