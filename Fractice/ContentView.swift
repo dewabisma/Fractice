@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {    
-    var KPK:Int = getKPK(num1: 48, num2: 12)
+    var fraction = generateFraction()
     
     var body: some View {
         VStack {
-            Text("\(KPK)")
+            Text("numerator: \(fraction.numerator)")
+            Text("denominator: \(fraction.denominator)")
         }
     }
 }

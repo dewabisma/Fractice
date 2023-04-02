@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E3630A329D974D200491D2E /* GetFPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A229D974D200491D2E /* GetFPB.swift */; };
 		4E3630A529D98BBA00491D2E /* GetKPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A429D98BBA00491D2E /* GetKPK.swift */; };
+		4E3630A729D9951900491D2E /* GenerateFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A629D9951900491D2E /* GenerateFraction.swift */; };
 		4E5A8E7F29D3FFB200EA2B05 /* FracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */; };
 		4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */; };
 		4E5A8E8329D3FFB300EA2B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		4E3630A229D974D200491D2E /* GetFPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFPB.swift; sourceTree = "<group>"; };
 		4E3630A429D98BBA00491D2E /* GetKPK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKPK.swift; sourceTree = "<group>"; };
+		4E3630A629D9951900491D2E /* GenerateFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFraction.swift; sourceTree = "<group>"; };
 		4E5A8E7B29D3FFB200EA2B05 /* Fractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FracticeApp.swift; sourceTree = "<group>"; };
 		4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */,
 				4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */,
 				4E3630A429D98BBA00491D2E /* GetKPK.swift */,
+				4E3630A629D9951900491D2E /* GenerateFraction.swift */,
 				4E3630A229D974D200491D2E /* GetFPB.swift */,
 				4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */,
 				4E5A8E8429D3FFB300EA2B05 /* Preview Content */,
@@ -146,6 +149,7 @@
 				4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */,
 				4E3630A529D98BBA00491D2E /* GetKPK.swift in Sources */,
 				4E5A8E7F29D3FFB200EA2B05 /* FracticeApp.swift in Sources */,
+				4E3630A729D9951900491D2E /* GenerateFraction.swift in Sources */,
 				4E3630A329D974D200491D2E /* GetFPB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
