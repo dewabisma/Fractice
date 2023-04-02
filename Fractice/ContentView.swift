@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View {    
+    var KPK:Int = getKPK(num1: 5, num2: 3)
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("YEEE")
         }
-        .padding()
     }
 }
 
