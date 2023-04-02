@@ -12,8 +12,8 @@ enum Operand: String {
     case minus = "-"
 }
 
-func checkAnswer(userAnswer:Float, operand:Operand, f1:Float, f2:Float) -> Bool {
-    var problemAnswer: Float
+func checkAnswer(userAnswer:Double, operand:Operand, f1:Double, f2:Double) -> Bool {
+    var problemAnswer: Double
     
     switch (operand) {
         case .plus:
