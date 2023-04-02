@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E03302429D9D3F8007DDE85 /* CheckAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03302329D9D3F8007DDE85 /* CheckAnswer.swift */; };
+		4E03302629D9DB5E007DDE85 /* SortFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03302529D9DB5E007DDE85 /* SortFraction.swift */; };
 		4E3630A329D974D200491D2E /* GetFPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A229D974D200491D2E /* GetFPB.swift */; };
 		4E3630A529D98BBA00491D2E /* GetKPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A429D98BBA00491D2E /* GetKPK.swift */; };
 		4E3630A729D9951900491D2E /* GenerateFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3630A629D9951900491D2E /* GenerateFraction.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		4E03302329D9D3F8007DDE85 /* CheckAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnswer.swift; sourceTree = "<group>"; };
+		4E03302529D9DB5E007DDE85 /* SortFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFraction.swift; sourceTree = "<group>"; };
 		4E3630A229D974D200491D2E /* GetFPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFPB.swift; sourceTree = "<group>"; };
 		4E3630A429D98BBA00491D2E /* GetKPK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKPK.swift; sourceTree = "<group>"; };
 		4E3630A629D9951900491D2E /* GenerateFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFraction.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */,
 				4E3630A429D98BBA00491D2E /* GetKPK.swift */,
 				4E03302329D9D3F8007DDE85 /* CheckAnswer.swift */,
+				4E03302529D9DB5E007DDE85 /* SortFraction.swift */,
 				4E3630A629D9951900491D2E /* GenerateFraction.swift */,
 				4E3630A229D974D200491D2E /* GetFPB.swift */,
 				4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E03302629D9DB5E007DDE85 /* SortFraction.swift in Sources */,
 				4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */,
 				4E3630A529D98BBA00491D2E /* GetKPK.swift in Sources */,
 				4E03302429D9D3F8007DDE85 /* CheckAnswer.swift in Sources */,
