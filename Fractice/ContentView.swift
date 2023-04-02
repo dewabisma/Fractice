@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {    
-    var KPK:Int = getKPK(num1: 5, num2: 3)
+    var KPK:Int = getKPK(num1: 48, num2: 12)
     
     var body: some View {
         VStack {
-            Text("YEEE")
+            Text("\(KPK)")
         }
     }
 }
