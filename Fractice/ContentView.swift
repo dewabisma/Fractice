@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Fraction
+//  Fractice
 //
 //  Created by Bisma Mahendra I Dewa Gede on 29/03/23.
 //

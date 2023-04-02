@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E5A8E7F29D3FFB200EA2B05 /* FractionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E7E29D3FFB200EA2B05 /* FractionApp.swift */; };
+		4E5A8E7F29D3FFB200EA2B05 /* FracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */; };
 		4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */; };
 		4E5A8E8329D3FFB300EA2B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */; };
 		4E5A8E8629D3FFB300EA2B05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8529D3FFB300EA2B05 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E5A8E7B29D3FFB200EA2B05 /* Fraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E5A8E7E29D3FFB200EA2B05 /* FractionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionApp.swift; sourceTree = "<group>"; };
+		4E5A8E7B29D3FFB200EA2B05 /* Fractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FracticeApp.swift; sourceTree = "<group>"; };
 		4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E5A8E8529D3FFB300EA2B05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,7 +35,7 @@
 		4E5A8E7229D3FFB200EA2B05 = {
 			isa = PBXGroup;
 			children = (
-				4E5A8E7D29D3FFB200EA2B05 /* Fraction */,
+				4E5A8E7D29D3FFB200EA2B05 /* Fractice */,
 				4E5A8E7C29D3FFB200EA2B05 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +43,20 @@
 		4E5A8E7C29D3FFB200EA2B05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E5A8E7B29D3FFB200EA2B05 /* Fraction.app */,
+				4E5A8E7B29D3FFB200EA2B05 /* Fractice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4E5A8E7D29D3FFB200EA2B05 /* Fraction */ = {
+		4E5A8E7D29D3FFB200EA2B05 /* Fractice */ = {
 			isa = PBXGroup;
 			children = (
-				4E5A8E7E29D3FFB200EA2B05 /* FractionApp.swift */,
+				4E5A8E7E29D3FFB200EA2B05 /* FracticeApp.swift */,
 				4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */,
 				4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */,
 				4E5A8E8429D3FFB300EA2B05 /* Preview Content */,
 			);
-			path = Fraction;
+			path = Fractice;
 			sourceTree = "<group>";
 		};
 		4E5A8E8429D3FFB300EA2B05 /* Preview Content */ = {
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E5A8E7A29D3FFB200EA2B05 /* Fraction */ = {
+		4E5A8E7A29D3FFB200EA2B05 /* Fractice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E5A8E8929D3FFB300EA2B05 /* Build configuration list for PBXNativeTarget "Fraction" */;
+			buildConfigurationList = 4E5A8E8929D3FFB300EA2B05 /* Build configuration list for PBXNativeTarget "Fractice" */;
 			buildPhases = (
 				4E5A8E7729D3FFB200EA2B05 /* Sources */,
 				4E5A8E7829D3FFB200EA2B05 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = Fraction;
+			name = Fractice;
 			productName = Fraction;
-			productReference = 4E5A8E7B29D3FFB200EA2B05 /* Fraction.app */;
+			productReference = 4E5A8E7B29D3FFB200EA2B05 /* Fractice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4E5A8E7629D3FFB200EA2B05 /* Build configuration list for PBXProject "Fraction" */;
+			buildConfigurationList = 4E5A8E7629D3FFB200EA2B05 /* Build configuration list for PBXProject "Fractice" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E5A8E7A29D3FFB200EA2B05 /* Fraction */,
+				4E5A8E7A29D3FFB200EA2B05 /* Fractice */,
 			);
 		};
 /* End PBXProject section */
@@ -138,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */,
-				4E5A8E7F29D3FFB200EA2B05 /* FractionApp.swift in Sources */,
+				4E5A8E7F29D3FFB200EA2B05 /* FracticeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E5A8E7629D3FFB200EA2B05 /* Build configuration list for PBXProject "Fraction" */ = {
+		4E5A8E7629D3FFB200EA2B05 /* Build configuration list for PBXProject "Fractice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E5A8E8729D3FFB300EA2B05 /* Debug */,
@@ -327,7 +327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E5A8E8929D3FFB300EA2B05 /* Build configuration list for PBXNativeTarget "Fraction" */ = {
+		4E5A8E8929D3FFB300EA2B05 /* Build configuration list for PBXNativeTarget "Fractice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E5A8E8A29D3FFB300EA2B05 /* Debug */,
