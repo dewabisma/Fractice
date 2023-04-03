@@ -7,49 +7,189 @@
 
 import SwiftUI
 
-struct ContentView: View {    
-    var fraction1 = generateFraction(maxVal: 100)
-    var fraction2 = generateFraction(maxVal: 10)
-    var fractionku = convertDecimalToFraction(decimalVal: 1/6)
-    var sortedFraction = sortFraction(operand: Operand.minus, fraction1: 1/6, fraction2: 5/6)
-    var randOperand = generateOperand()
+var f1 = generateFraction()
+var f2 = generateFraction()
+
+struct ContentView: View {
+    var solution = generateSolutionSteps(f1: f1, f2: f2, operand: Operand.plus)
     
-    var answer:Bool = checkAnswer(
-        userAnswer: 5/6,
-        operand: Operand.plus,
-        f1: 2/6,
-        f2: 3/6
-    )
     
     var body: some View {
         VStack {
-            VStack{
-                Text("f1 numerator: \(fraction1.numerator)")
-                Text("f1 denominator: \(fraction1.denominator)")
+            HStack {
+                VStack{
+                    Text("\(f1.numerator)")
+                    Image(systemName: "minus")
+                    Text("\(f1.denominator)")
+                }
+                
+                Image(systemName: "plus")
+                
+                VStack{
+                    Text("\(f2.numerator)")
+                    Image(systemName: "minus")
+                    Text("\(f2.denominator)")
+                }
             }
             
-            VStack{
-                Text("f2 numerator: \(fraction2.numerator)")
-                Text("f2 denominator: \(fraction2.denominator)")
-            }
             
-            VStack{
-                Text("fku numerator: \(fractionku.numerator)")
-                Text("fku denominator: \(fractionku.denominator)")
+            VStack {
+                ForEach(0..<solution.steps.count, id: \.self) {
+                    if !solution.isDenominatorEqual && $0 == 0 {
+                        Text("Step 1: Equalize Fractions")
+                       
+                        HStack {
+                            VStack(spacing: 4) {
+                                HStack(spacing: 2) {
+                                    Text("\(f1.numerator)")
+                                    Image(systemName: "multiply")
+                                    Text("\((solution.steps[0] as! TimesFactors).t1)")
+                                }
+                                
+                                Image(systemName: "minus")
+                                    .resizable()
+                                    .frame(width: 70, height: 1)
+                                
+                                HStack(spacing: 2) {
+                                    Text("\(f1.denominator)")
+                                    Image(systemName: "multiply")
+                                    Text("\((solution.steps[0] as! TimesFactors).t1)")
+                                }
+                            }
+                            
+                            Image(systemName: "plus")
+                            
+                            VStack{
+                                VStack(spacing: 4) {
+                                    HStack(spacing: 2) {
+                                        Text("\(f2.numerator)")
+                                        Image(systemName: "multiply")
+                                        Text("\((solution.steps[0] as! TimesFactors).t2)")
+                                    }
+                                    
+                                    Image(systemName: "minus")
+                                        .resizable()
+                                        .frame(width: 70, height: 1)
+                                    
+                                    HStack(spacing: 2) {
+                                        Text("\(f2.denominator)")
+                                        Image(systemName: "multiply")
+                                        Text("\((solution.steps[0] as! TimesFactors).t2)")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if !solution.isDenominatorEqual && $0 == 1 {
+                        Text("Step 2: Calculate").padding(.top, 24)
+                        
+                        HStack {
+                            VStack(spacing: 4) {
+                                Text("\((solution.steps[1] as! FractionPair).f1.numerator)")
+                              
+                                Image(systemName: "minus")
+                                    .resizable()
+                                    .frame(width:20, height:1)
+                                
+                                Text("\((solution.steps[1] as! FractionPair).f1.denominator)")
+                            }
+                            
+                            Image(systemName: "plus")
+                            
+                            VStack(spacing: 4) {
+                                Text("\((solution.steps[1] as! FractionPair).f2.numerator)")
+                              
+                                Image(systemName: "minus")
+                                    .resizable()
+                                    .frame(width:20, height:1)
+                                
+                                Text("\((solution.steps[1] as! FractionPair).f2.denominator)")
+                            }
+                        }
+                    }
+                    
+                    if !solution.isDenominatorEqual && solution.canBeSimplified && $0 == 2 {
+                        Text("Step 3: Simplify Fraction")
+                            .padding(.top, 24)
+                        
+                        HStack {
+                            VStack(spacing: 4) {
+                                HStack(spacing: 2) {
+                                    Text("\((solution.steps[2] as! SimplifyProperties).operationResult.numerator)")
+                                    
+                                    Image(systemName: "divide")
+                                    
+                                    Text("\((solution.steps[2] as! SimplifyProperties).fpb)")
+                                }
+                                
+                                Image(systemName: "minus")
+                                    .resizable()
+                                    .frame(width: 70, height: 1)
+                                
+                                HStack(spacing: 2) {
+                                    Text("\((solution.steps[2] as! SimplifyProperties).operationResult.denominator)")
+                                    
+                                    Image(systemName: "divide")
+                                    
+                                    Text("\((solution.steps[2] as! SimplifyProperties).fpb)")
+                                }
+                            }
+                        }
+                    }
+                    
+                    if solution.isDenominatorEqual && $0 == 0 {
+                        Text("Step 1: Calculate")
+                        
+                        HStack {
+                            VStack{
+                                Text("\(f1.numerator)")
+                                Image(systemName: "minus")
+                                Text("\(f1.denominator)")
+                            }
+                            
+                            Image(systemName: "plus")
+                            
+                            VStack{
+                                Text("\(f2.numerator)")
+                                Image(systemName: "minus")
+                                Text("\(f2.denominator)")
+                            }
+                        }
+                    }
+                    
+                    if solution.isDenominatorEqual && solution.canBeSimplified && $0 == 1 {
+                        Text("Step 2: Simplify Fraction")
+                            .padding(.top, 24)
+                        
+                        HStack {
+                            VStack(spacing: 4) {
+                                HStack(spacing: 2) {
+                                    Text("\((solution.steps[1] as! SimplifyProperties).operationResult.numerator)")
+                                    
+                                    Image(systemName: "divide")
+                                    
+                                    Text("\((solution.steps[1] as! SimplifyProperties).fpb)")
+                                }
+                                
+                                Image(systemName: "minus")
+                                    .resizable()
+                                    .frame(width: 70, height: 1)
+                                
+                                HStack(spacing: 2) {
+                                    Text("\((solution.steps[1] as! SimplifyProperties).operationResult.denominator)")
+                                    
+                                    Image(systemName: "divide")
+                                    
+                                    Text("\((solution.steps[1] as! SimplifyProperties).fpb)")
+         
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            
-            VStack{
-                Text("sorted f1: \(sortedFraction.f1)")
-                Text("sorted f2: \(sortedFraction.f2)")
-            }
-            
-            Text("operand: \(randOperand)")
-            
-            if answer {
-                Text("Correct")
-            } else {
-                Text("Wrong")
-            }
+            .padding(.top, 24)
         }
     }
 }

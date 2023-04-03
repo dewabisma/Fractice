@@ -17,6 +17,29 @@ func convertFractionToDecimal(numerator:Int, denominator:Int) -> Double {
     return nume / deno
 }
 
+func multiplyFractionNotations(fraction:Fraction, timesFactor:Int) -> Fraction {
+    let newNum = fraction.numerator * timesFactor
+    let newDen = fraction.denominator * timesFactor
+    let newDeci = convertFractionToDecimal(numerator: newNum, denominator: newDen)
+    
+    return (newNum, newDen, newDeci)
+}
+
+func calculateFractionsOperation(f1:Fraction, f2:Fraction, operand:Operand) -> Fraction {
+    var resultNum:Int
+    
+    switch(operand) {
+        case .plus:
+            resultNum = f1.numerator + f2.numerator
+        case .minus:
+            resultNum = f1.numerator - f2.numerator
+    }
+    
+    let resultDeci = convertFractionToDecimal(numerator: resultNum, denominator: f1.denominator)
+    
+    return (resultNum, f1.denominator, resultDeci)
+}
+
 func generateFraction(maxVal:Int = 10) -> Fraction {
     let numerator = Int.random(in: 1..<maxVal)
     var denominator:Int

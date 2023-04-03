@@ -51,7 +51,6 @@
 		4E5A8E7229D3FFB200EA2B05 = {
 			isa = PBXGroup;
 			children = (
-				4E998A4A29DA7FEA002711F9 /* GenerateSolutionSteps.swift */,
 				4E5A8E7D29D3FFB200EA2B05 /* Fractice */,
 				4E5A8E7C29D3FFB200EA2B05 /* Products */,
 			);
@@ -73,6 +72,7 @@
 				4E3630A429D98BBA00491D2E /* GetKPK.swift */,
 				4E03302329D9D3F8007DDE85 /* CheckAnswer.swift */,
 				4E03302529D9DB5E007DDE85 /* SortFraction.swift */,
+				4E998A4A29DA7FEA002711F9 /* GenerateSolutionSteps.swift */,
 				4E03302729D9E034007DDE85 /* ConvertDecimalToFraction.swift */,
 				4E3630A629D9951900491D2E /* GenerateFraction.swift */,
 				4E998A4829DA7B63002711F9 /* GenerateOperand.swift */,
