@@ -17,6 +17,8 @@
 		4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */; };
 		4E5A8E8329D3FFB300EA2B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */; };
 		4E5A8E8629D3FFB300EA2B05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A8E8529D3FFB300EA2B05 /* Preview Assets.xcassets */; };
+		4E998A4929DA7B63002711F9 /* GenerateOperand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E998A4829DA7B63002711F9 /* GenerateOperand.swift */; };
+		4E998A4B29DA7FEA002711F9 /* GenerateSolutionSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E998A4A29DA7FEA002711F9 /* GenerateSolutionSteps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		4E5A8E8029D3FFB200EA2B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E5A8E8529D3FFB300EA2B05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4E998A4829DA7B63002711F9 /* GenerateOperand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOperand.swift; sourceTree = "<group>"; };
+		4E998A4A29DA7FEA002711F9 /* GenerateSolutionSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSolutionSteps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 		4E5A8E7229D3FFB200EA2B05 = {
 			isa = PBXGroup;
 			children = (
+				4E998A4A29DA7FEA002711F9 /* GenerateSolutionSteps.swift */,
 				4E5A8E7D29D3FFB200EA2B05 /* Fractice */,
 				4E5A8E7C29D3FFB200EA2B05 /* Products */,
 			);
@@ -70,6 +75,7 @@
 				4E03302529D9DB5E007DDE85 /* SortFraction.swift */,
 				4E03302729D9E034007DDE85 /* ConvertDecimalToFraction.swift */,
 				4E3630A629D9951900491D2E /* GenerateFraction.swift */,
+				4E998A4829DA7B63002711F9 /* GenerateOperand.swift */,
 				4E3630A229D974D200491D2E /* GetFPB.swift */,
 				4E5A8E8229D3FFB300EA2B05 /* Assets.xcassets */,
 				4E5A8E8429D3FFB300EA2B05 /* Preview Content */,
@@ -155,6 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E998A4929DA7B63002711F9 /* GenerateOperand.swift in Sources */,
+				4E998A4B29DA7FEA002711F9 /* GenerateSolutionSteps.swift in Sources */,
 				4E03302629D9DB5E007DDE85 /* SortFraction.swift in Sources */,
 				4E5A8E8129D3FFB200EA2B05 /* ContentView.swift in Sources */,
 				4E3630A529D98BBA00491D2E /* GetKPK.swift in Sources */,

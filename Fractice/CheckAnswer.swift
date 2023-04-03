@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Operand: String {
-    case plus = "+"
-    case minus = "-"
-}
-
 func checkAnswer(userAnswer:Double, operand:Operand, f1:Double, f2:Double) -> Bool {
     var problemAnswer: Double
     

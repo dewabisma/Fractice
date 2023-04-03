@@ -12,6 +12,7 @@ struct ContentView: View {
     var fraction2 = generateFraction(maxVal: 10)
     var fractionku = convertDecimalToFraction(decimalVal: 1/6)
     var sortedFraction = sortFraction(operand: Operand.minus, fraction1: 1/6, fraction2: 5/6)
+    var randOperand = generateOperand()
     
     var answer:Bool = checkAnswer(
         userAnswer: 5/6,
@@ -41,6 +42,8 @@ struct ContentView: View {
                 Text("sorted f1: \(sortedFraction.f1)")
                 Text("sorted f2: \(sortedFraction.f2)")
             }
+            
+            Text("operand: \(randOperand)")
             
             if answer {
                 Text("Correct")
