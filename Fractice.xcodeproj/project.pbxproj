@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4EBCFED829DC5B55000F3F13 /* GenerateSolutionSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */; };
+		4EBCFED929DC5BB3000F3F13 /* GetFPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DB29DC593B00567324 /* GetFPB.swift */; };
+		4EBCFEDA29DC5BB3000F3F13 /* GetKPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DD29DC593B00567324 /* GetKPK.swift */; };
+		4EBCFEDB29DC5BB3000F3F13 /* GenerateFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DA29DC593B00567324 /* GenerateFraction.swift */; };
+		4EBCFEDC29DC5BB3000F3F13 /* SortFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DF29DC593B00567324 /* SortFraction.swift */; };
+		4EBCFEDD29DC5BB3000F3F13 /* CheckAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D829DC593B00567324 /* CheckAnswer.swift */; };
+		4EBCFEDE29DC5BB3000F3F13 /* GenerateOperand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DC29DC593B00567324 /* GenerateOperand.swift */; };
+		4EBCFEDF29DC5BB3000F3F13 /* ConvertDecimalToFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */; };
+		4EBCFEE029DC5DED000F3F13 /* ClosePromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4E129DC593C00567324 /* ClosePromptView.swift */; };
+		4EBCFEE129DC5E02000F3F13 /* QuestionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4E429DC593C00567324 /* QuestionScreen.swift */; };
+		4EBCFEE229DC5E02000F3F13 /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4E329DC593C00567324 /* SettingScreen.swift */; };
+		4EBCFEE429DC5E8D000F3F13 /* FractionShapeGenerationExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */; };
+		4EF0A4B629DC590200567324 /* FracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4B529DC590200567324 /* FracticeApp.swift */; };
+		4EF0A4BA29DC590300567324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0A4B929DC590300567324 /* Assets.xcassets */; };
+		4EF0A4BD29DC590300567324 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0A4BC29DC590300567324 /* Preview Assets.xcassets */; };
+		4EF0A4E629DC593C00567324 /* ReviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D529DC593B00567324 /* ReviewScreen.swift */; };
+		4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */; };
+		4EF0A4E829DC593C00567324 /* StrokeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D329DC593B00567324 /* StrokeTextView.swift */; };
+		4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionShapeGenerationExample.swift; sourceTree = "<group>"; };
+		4EF0A4B229DC590200567324 /* Fractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF0A4B529DC590200567324 /* FracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FracticeApp.swift; sourceTree = "<group>"; };
+		4EF0A4B929DC590300567324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EF0A4BC29DC590300567324 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4EF0A4D329DC593B00567324 /* StrokeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeTextView.swift; sourceTree = "<group>"; };
+		4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionShapeGeneratorView.swift; sourceTree = "<group>"; };
+		4EF0A4D529DC593B00567324 /* ReviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewScreen.swift; sourceTree = "<group>"; };
+		4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionsPrintExample.swift; sourceTree = "<group>"; };
+		4EF0A4D829DC593B00567324 /* CheckAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnswer.swift; sourceTree = "<group>"; };
+		4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSolutionSteps.swift; sourceTree = "<group>"; };
+		4EF0A4DA29DC593B00567324 /* GenerateFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFraction.swift; sourceTree = "<group>"; };
+		4EF0A4DB29DC593B00567324 /* GetFPB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFPB.swift; sourceTree = "<group>"; };
+		4EF0A4DC29DC593B00567324 /* GenerateOperand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOperand.swift; sourceTree = "<group>"; };
+		4EF0A4DD29DC593B00567324 /* GetKPK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKPK.swift; sourceTree = "<group>"; };
+		4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertDecimalToFraction.swift; sourceTree = "<group>"; };
+		4EF0A4DF29DC593B00567324 /* SortFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFraction.swift; sourceTree = "<group>"; };
+		4EF0A4E129DC593C00567324 /* ClosePromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosePromptView.swift; sourceTree = "<group>"; };
+		4EF0A4E329DC593C00567324 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
+		4EF0A4E429DC593C00567324 /* QuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreen.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EF0A4AF29DC590200567324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4EF0A4A929DC590200567324 = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4B429DC590200567324 /* Fractice */,
+				4EF0A4B329DC590200567324 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4EF0A4B329DC590200567324 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4B229DC590200567324 /* Fractice.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EF0A4B429DC590200567324 /* Fractice */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4B529DC590200567324 /* FracticeApp.swift */,
+				4EF0A4D529DC593B00567324 /* ReviewScreen.swift */,
+				4EF0A4E329DC593C00567324 /* SettingScreen.swift */,
+				4EF0A4E429DC593C00567324 /* QuestionScreen.swift */,
+				4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */,
+				4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */,
+				4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */,
+				4EF0A4D329DC593B00567324 /* StrokeTextView.swift */,
+				4EF0A4E129DC593C00567324 /* ClosePromptView.swift */,
+				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
+				4EF0A4D829DC593B00567324 /* CheckAnswer.swift */,
+				4EF0A4DA29DC593B00567324 /* GenerateFraction.swift */,
+				4EF0A4DB29DC593B00567324 /* GetFPB.swift */,
+				4EF0A4DC29DC593B00567324 /* GenerateOperand.swift */,
+				4EF0A4DD29DC593B00567324 /* GetKPK.swift */,
+				4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */,
+				4EF0A4DF29DC593B00567324 /* SortFraction.swift */,
+				4EF0A4B929DC590300567324 /* Assets.xcassets */,
+				4EF0A4BB29DC590300567324 /* Preview Content */,
+			);
+			path = Fractice;
+			sourceTree = "<group>";
+		};
+		4EF0A4BB29DC590300567324 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4BC29DC590300567324 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EF0A4B129DC590200567324 /* Fractice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EF0A4C029DC590300567324 /* Build configuration list for PBXNativeTarget "Fractice" */;
+			buildPhases = (
+				4EF0A4AE29DC590200567324 /* Sources */,
+				4EF0A4AF29DC590200567324 /* Frameworks */,
+				4EF0A4B029DC590200567324 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fractice;
+			productName = Fractice;
+			productReference = 4EF0A4B229DC590200567324 /* Fractice.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EF0A4AA29DC590200567324 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					4EF0A4B129DC590200567324 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 4EF0A4AD29DC590200567324 /* Build configuration list for PBXProject "Fractice" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EF0A4A929DC590200567324;
+			productRefGroup = 4EF0A4B329DC590200567324 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EF0A4B129DC590200567324 /* Fractice */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EF0A4B029DC590200567324 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF0A4BD29DC590300567324 /* Preview Assets.xcassets in Resources */,
+				4EF0A4BA29DC590300567324 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EF0A4AE29DC590200567324 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF0A4E829DC593C00567324 /* StrokeTextView.swift in Sources */,
+				4EBCFEE429DC5E8D000F3F13 /* FractionShapeGenerationExample.swift in Sources */,
+				4EBCFEE029DC5DED000F3F13 /* ClosePromptView.swift in Sources */,
+				4EBCFEDE29DC5BB3000F3F13 /* GenerateOperand.swift in Sources */,
+				4EF0A4E629DC593C00567324 /* ReviewScreen.swift in Sources */,
+				4EBCFEDD29DC5BB3000F3F13 /* CheckAnswer.swift in Sources */,
+				4EBCFEDF29DC5BB3000F3F13 /* ConvertDecimalToFraction.swift in Sources */,
+				4EBCFEE129DC5E02000F3F13 /* QuestionScreen.swift in Sources */,
+				4EBCFEDC29DC5BB3000F3F13 /* SortFraction.swift in Sources */,
+				4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */,
+				4EBCFED829DC5B55000F3F13 /* GenerateSolutionSteps.swift in Sources */,
+				4EF0A4B629DC590200567324 /* FracticeApp.swift in Sources */,
+				4EBCFEDA29DC5BB3000F3F13 /* GetKPK.swift in Sources */,
+				4EBCFEE229DC5E02000F3F13 /* SettingScreen.swift in Sources */,
+				4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */,
+				4EBCFEDB29DC5BB3000F3F13 /* GenerateFraction.swift in Sources */,
+				4EBCFED929DC5BB3000F3F13 /* GetFPB.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4EF0A4BE29DC590300567324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4EF0A4BF29DC590300567324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EF0A4C129DC590300567324 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fractice/Preview Content\"";
+				DEVELOPMENT_TEAM = 578BJN6MM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trolley.Fractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4EF0A4C229DC590300567324 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fractice/Preview Content\"";
+				DEVELOPMENT_TEAM = 578BJN6MM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trolley.Fractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EF0A4AD29DC590200567324 /* Build configuration list for PBXProject "Fractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF0A4BE29DC590300567324 /* Debug */,
+				4EF0A4BF29DC590300567324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EF0A4C029DC590300567324 /* Build configuration list for PBXNativeTarget "Fractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF0A4C129DC590300567324 /* Debug */,
+				4EF0A4C229DC590300567324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EF0A4AA29DC590200567324 /* Project object */;
+}
