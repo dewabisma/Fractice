@@ -7,16 +7,80 @@
 
 import SwiftUI
 
+struct AnswerField: View {
+    @State var inputJawaban: String
+    var body: some View {
+        
+        TextField(
+                    "",
+                    text: $inputJawaban
+                )
+        
+        .frame(width: 48, height: 48)
+        .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 2)
+        ) //.padding(.vertical, 8)
+        
+    }
+}
+
+
+struct ButtonBelow: View {
+    
+    var body: some View {
+            HStack {
+                
+                Button {} label: {
+                    Text ("TAHAPAN")
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
+                        .tracking(5)
+                        .foregroundColor(Color ("OrangeText"))
+                    
+                        
+                }
+                .frame(maxWidth: 152, maxHeight: 48)
+                .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color("OrangeDark"), lineWidth: 2)
+                        )
+                .background(.white)
+                .cornerRadius(30)
+                .padding(.bottom, 32)
+                .padding(.trailing, 8)
+                
+                Button {} label: {
+                    Text ("JAWAB")
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
+                        .tracking(5)
+                        .foregroundColor(Color .white)
+                }
+                .frame(maxWidth: 152, maxHeight: 48)
+                .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
+                .cornerRadius(30)
+                .padding(.bottom, 32)
+                .padding(.leading, 8)
+                
+            }
+            .frame(maxWidth:.infinity, maxHeight: 143)
+            .background(.white)
+            .cornerRadius(20)
+            .shadow(color: Color ("GrayBlur"), radius: 5, x:0, y:-3)
+    }
+}
+
 struct QuestionScreen: View {
     @State private var inputJawaban1: String = ""
     @State private var inputJawaban2: String = ""
-
+    var isClicked = false
+    
     var body: some View {
                 
         VStack {
             VStack {
                 HStack {
-    //                Spacer ()
                     Button {} label: {
                         Image(systemName: "x.square.fill")
                             .resizable()
@@ -24,8 +88,8 @@ struct QuestionScreen: View {
                             .foregroundColor(.red)
                     }
                     
-                                        
                     Spacer()
+                    
                     Text ("Soal 1")
                         .foregroundColor(Color("NavyText"))
                         .font(.system(size: 20))
@@ -39,29 +103,23 @@ struct QuestionScreen: View {
                             .frame(width: 27, height: 27)
                             .foregroundColor(.gray)
                     }
-                    
-    //                Spacer()
                 }.padding(.horizontal, 32)
                 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                    .fill(Color ("PurpleLight"))
-                                    .frame(maxWidth: 326, maxHeight: 280)
-                                    .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
-
-                    
+                VStack {
                     Text("Pak Budi, seorang pembuat sirup. Ia memiliki gula 614kg gula. Kemudian membeli lagi 412kg. Selanjutnya, gula tersebut dibuat sirup yang harganya 50 ribu. Banyaknya botol yang harus disediakan Pak Budi adalah …")
-                        
-                        
-                        .frame(maxWidth: 290, maxHeight: 210)
+        
                         .fontWeight(.semibold)
+                        .lineSpacing(16)
                         .foregroundColor(.white)
                         .font(.system(size: 18))
-                        //.multilineTextAlignment(.justified)
-                        //.justifiedTextAlignment
-                    
-                        //.lineLimit(3)
-                }.padding(.vertical, 30)
+                        .padding(.all, 24)
+                }
+                .frame(maxWidth:.infinity, maxHeight: 280)
+                .background(Color ("PurpleLight"))
+                .cornerRadius(20)
+                .padding(.vertical, 32)
+                .padding(.horizontal, 32)
+                .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
                 
                 
                 HStack {
@@ -69,96 +127,36 @@ struct QuestionScreen: View {
                         .foregroundColor(Color("OrangeText"))
                         .font(.system(size: 20))
                         .fontWeight(.heavy)
-                        .padding(.leading)
                     Spacer()
-                } .padding(.leading)
+                } .padding(.leading, 32)
+                    .padding(.bottom, 16)
                 
-                TextField(
-                            "",
-                            text: $inputJawaban1
-                        )
+                if isClicked {
+                    
+                    HStack {
+                        
+                    }
+                    
+                    Text ("Jawaban")
+                        .foregroundColor(Color("OrangeText"))
+                }
                 
-                .frame(width: 40, height: 40)
-                .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 2)
-                ) .padding(.top, 30)
-                
-                /*RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(Color .gray,lineWidth: 2)
-                    .frame(width: 40, height: 40)*/
+                AnswerField(inputJawaban: inputJawaban1)
                 
                 Image (systemName: "minus")
                     .resizable()
-                    .frame(width: 40, height: 2)
-                    .padding(.vertical, 5)
+                    .frame(width: 48, height: 2)
+                    .padding(.vertical, 12)
                 
-                
-                /*RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(Color .gray,lineWidth: 2)
-                    .frame(width: 40, height: 40)*/
-                
-                TextField(
-                            "",
-                            text: $inputJawaban2
-                        )
-                
-                .frame(width: 40, height: 40)
-                .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 2)
-                    )
+                AnswerField(inputJawaban: inputJawaban2)
                 
                 Spacer()
                 
                 
             }
             
-            
-            ZStack {
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(.white)
-                    .frame(maxWidth: 390, maxHeight: 143)
-                    .shadow(color: Color ("GrayBlur"), radius: 5, x:0, y:-3)
-                    
-                
-                HStack {
-                    
-                    Button {} label: {
-                        Text ("TAHAPAN")
-                            .fontWeight(.bold)
-                            .font(.system(size: 20))
-                            .tracking(5)
-                            .foregroundColor(Color ("OrangeText"))
-                        
-                            
-                    }
-                    .frame(maxWidth: 152, maxHeight: 48)
-                    .overlay(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(Color("OrangeDark"), lineWidth: 2)
-                            )
-                    .background(.white)
-                    
-                    .cornerRadius(30)
-                    
-                    
-                    Button {} label: {
-                        Text ("JAWAB")
-                            .fontWeight(.bold)
-                            .font(.system(size: 20))
-                            .tracking(5)
-                            .foregroundColor(Color .white)
-                    }
-                    .frame(maxWidth: 152, maxHeight: 48)
-                    .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
-                    .cornerRadius(30)
-                    
-                } .padding(.bottom, 20)
-                
-            }
-            
-            
+            ButtonBelow()
+
         }
         .ignoresSafeArea(.all)
         .frame(maxHeight: .infinity)
@@ -172,3 +170,4 @@ struct QuestionScreen_Previews: PreviewProvider {
         QuestionScreen()
     }
 }
+
