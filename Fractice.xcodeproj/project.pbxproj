@@ -62,6 +62,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E9CC35429DD11EC0006E9A5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4D829DC593B00567324 /* CheckAnswer.swift */,
+				4EF0A4DA29DC593B00567324 /* GenerateFraction.swift */,
+				4EF0A4DB29DC593B00567324 /* GetFPB.swift */,
+				4EF0A4DC29DC593B00567324 /* GenerateOperand.swift */,
+				4EF0A4DD29DC593B00567324 /* GetKPK.swift */,
+				4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */,
+				4EF0A4DF29DC593B00567324 /* SortFraction.swift */,
+				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4E9CC35529DD124D0006E9A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */,
+				4EF0A4D329DC593B00567324 /* StrokeTextView.swift */,
+				4EF0A4E129DC593C00567324 /* ClosePromptView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4E9CC35629DD128A0006E9A5 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */,
+				4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		4E9CC35729DD129F0006E9A5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0A4D529DC593B00567324 /* ReviewScreen.swift */,
+				4EF0A4E329DC593C00567324 /* SettingScreen.swift */,
+				4EF0A4E429DC593C00567324 /* QuestionScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		4EF0A4A929DC590200567324 = {
 			isa = PBXGroup;
 			children = (
@@ -82,22 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				4EF0A4B529DC590200567324 /* FracticeApp.swift */,
-				4EF0A4D529DC593B00567324 /* ReviewScreen.swift */,
-				4EF0A4E329DC593C00567324 /* SettingScreen.swift */,
-				4EF0A4E429DC593C00567324 /* QuestionScreen.swift */,
-				4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */,
-				4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */,
-				4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */,
-				4EF0A4D329DC593B00567324 /* StrokeTextView.swift */,
-				4EF0A4E129DC593C00567324 /* ClosePromptView.swift */,
-				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
-				4EF0A4D829DC593B00567324 /* CheckAnswer.swift */,
-				4EF0A4DA29DC593B00567324 /* GenerateFraction.swift */,
-				4EF0A4DB29DC593B00567324 /* GetFPB.swift */,
-				4EF0A4DC29DC593B00567324 /* GenerateOperand.swift */,
-				4EF0A4DD29DC593B00567324 /* GetKPK.swift */,
-				4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */,
-				4EF0A4DF29DC593B00567324 /* SortFraction.swift */,
+				4E9CC35729DD129F0006E9A5 /* Screens */,
+				4E9CC35629DD128A0006E9A5 /* Examples */,
+				4E9CC35529DD124D0006E9A5 /* Views */,
+				4E9CC35429DD11EC0006E9A5 /* Utilities */,
 				4EF0A4B929DC590300567324 /* Assets.xcassets */,
 				4EF0A4BB29DC590300567324 /* Preview Content */,
 			);
