@@ -89,7 +89,7 @@ struct ReviewScreen: View {
                     // StepWrapper
                     VStack {
                         // Sub Heading
-                        StepHeading(title: "Step 1: Equalize Denominator llllllllllllllllllllllllllll", paddingTop: 0)
+                        StepHeading(title: "Step 1: Equalize Denominator", paddingTop: 0)
                         
                         // Steps
                         HStack(spacing: 12) {
