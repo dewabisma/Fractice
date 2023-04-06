@@ -7,23 +7,34 @@
 
 import SwiftUI
 
+struct Jawaban {
+    var numerator:String = ""
+    var denominator:String = ""
+}
+
+//{
+//    numerator:"",
+//    denominator:""
+//}
+
 struct AnswerField: View {
-    @State var inputJawaban: String
+    @Binding var inputJawaban: String
     var body: some View {
         
         TextField(
-                    "sdvgd",
-                    text: $inputJawaban
-                )
-        
+            "sdvgd",
+            text: $inputJawaban
+        )
+        .multilineTextAlignment(.center)
         .frame(width: 48, height: 48)
         .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 2)
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 2)
         )
         .keyboardType(.numberPad)
     }
 }
+
 
 struct Steps: View {
     var title:String
@@ -49,9 +60,56 @@ struct Steps: View {
     }
 }
 
+struct Tahapan: View {
+    @Binding var penyebut:String
+    
+    var body: some View {
+        HStack {
+            VStack(spacing: 4) {
+                HStack(spacing: 2) {
+                    Text("1")
+                    Image(systemName: "multiply")
+                    AnswerField(inputJawaban: $penyebut)
+                }
+                
+                Image(systemName: "minus")
+                    .resizable()
+                    .frame(width: 70, height: 1)
+                
+                HStack(spacing: 2) {
+                    Text("3")
+                    Image(systemName: "multiply")
+                    AnswerField(inputJawaban: $penyebut)
+                }
+            }
+            
+            Image(systemName: "plus")
+            
+            VStack{
+                VStack(spacing: 4) {
+                    HStack(spacing: 2) {
+                        Text("1")
+                        Image(systemName: "multiply")
+                        Text("2")
+                    }
+                    
+                    Image(systemName: "minus")
+                        .resizable()
+                        .frame(width: 70, height: 1)
+                    
+                    HStack(spacing: 2) {
+                        Text("2")
+                        Image(systemName: "multiply")
+                        Text("2")
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct QuestionScreen: View {
-    @State private var inputJawaban1: String = ""
-    @State private var inputJawaban2: String = ""
+    @State private var jawaban = Jawaban()
     @State var isClicked = false
     @State private var showAlert = false
     
@@ -124,20 +182,19 @@ struct QuestionScreen: View {
                     Steps(title: "Step 1: Equalize Denominator")
                         .padding(.horizontal, 32)
                     
-                    HStack {
-                        FractionNotation (numerator: 1, denominator: 2)
-
-                    }
+//                    HStack {
+//                        Tahapan(penyebut: $inputJawaban1)
+//                    }
                     
                 } else {
-                    AnswerField(inputJawaban: inputJawaban1)
+                    AnswerField(inputJawaban: $jawaban.numerator)
                     
                     Image (systemName: "minus")
                         .resizable()
                         .frame(width: 48, height: 2)
                         .padding(.vertical, 12)
                     
-                    AnswerField(inputJawaban: inputJawaban2)
+                    AnswerField(inputJawaban: $jawaban.denominator)
                     
                 }
                 

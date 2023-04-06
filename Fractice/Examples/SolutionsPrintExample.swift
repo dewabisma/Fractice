@@ -35,6 +35,7 @@ struct SolutionsPrintExample: View {
             
             VStack {
                 ForEach(0..<solution.steps.count, id: \.self) {
+                    
                     if !solution.isDenominatorEqual && $0 == 0 {
                         Text("Step 1: Equalize Fractions")
                        
