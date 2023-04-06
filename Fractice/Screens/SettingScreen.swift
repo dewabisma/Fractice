@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ModeSoal:View {
     @State var vibrate:Bool
-    
+    var title:String
     var body: some View {
         HStack{
-            Text("Soal Bilangan Pecahan")
+            Text(title)
                 .font(.system(size:18))
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
@@ -21,6 +21,7 @@ struct ModeSoal:View {
             
             Toggle(isOn: $vibrate) {
                 }
+            
             .frame(maxWidth: 50)
             .padding(10)
             
@@ -63,49 +64,12 @@ struct SettingScreen: View {
                         .foregroundColor(Color("OrangeDark"))
                         .padding(.bottom,40)
                         
-                    ModeSoal(vibrate: vibrateOnBilangan)
+                    ModeSoal(vibrate: vibrateOnBilangan,title:"Soal Bilangan Pecahan")
                     
-                    HStack{
-                        Text("Soal Cerita Pecahan")
-                            .font(.system(size:18))
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                            .padding(10)
-                        Spacer()
-                        
-                        Toggle(isOn: $vibrateOnCerita) {
-                            }
-                        .frame(maxWidth: 50)
-                        .padding(10)
-                        
-                    }
-                    .frame(maxWidth: 327, maxHeight: 68)
-                    .background(Color("PurpleLight"))
-                    .cornerRadius(20)
-                    .shadow(color:Color("PurpleDark"), radius: 0.1, x:0, y:5)
-                    .padding(.bottom,40)
+                    ModeSoal(vibrate: vibrateOnCerita,title:"Soal Cerita Pecahan")
                     
-                    
-                    HStack{
-                        Text("Soal Gambar Pecahan")
-                            .font(.system(size:18))
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                            .padding(10)
-                        Spacer()
-                        
-                        Toggle(isOn: $vibrateOnGambar) {
-                            }
-                        .frame(maxWidth: 50)
-                        .padding(10)
-                        
-                        
-                    }
-                    .frame(maxWidth: 327, maxHeight: 68)
-                    .background(Color("PurpleLight"))
-                    .cornerRadius(20)
-                    .padding(.bottom,40)
-                    .shadow(color:Color("PurpleDark"), radius: 0.1, x:0, y:5)
+                    ModeSoal(vibrate: vibrateOnGambar,title:"Soal Gambar Pecahan")
+                   
                     
                     Button("Mulai!") { print ("button tapped")}
                         .tracking(5)
