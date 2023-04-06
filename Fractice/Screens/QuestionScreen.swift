@@ -12,7 +12,7 @@ struct AnswerField: View {
     var body: some View {
         
         TextField(
-                    "",
+                    "sdvgd",
                     text: $inputJawaban
                 )
         
@@ -20,26 +20,10 @@ struct AnswerField: View {
         .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray, lineWidth: 2)
-        ) //.padding(.vertical, 8)
+        )
+        .keyboardType(.numberPad)
     }
 }
-
-//struct AnswerFieldSteps: View {
-//    @State var inputJawabanSteps: String
-//    var body: some View {
-//
-//        TextField(
-//                    "",
-//                    text: $inputJawabanSteps
-//                )
-//
-//        .frame(width: 32, height: 32)
-//        .overlay(
-//                RoundedRectangle(cornerRadius: 10)
-//                    .stroke(Color.gray, lineWidth: 2)
-//        ) //.padding(.vertical, 8)
-//    }
-//}
 
 struct Steps: View {
     var title:String
@@ -62,16 +46,12 @@ struct Steps: View {
                 .foregroundColor(Color ("PurpleLight")), alignment: .leading
                        )
         .cornerRadius(16)
-//        .padding(.vertical)
     }
 }
 
 struct QuestionScreen: View {
     @State private var inputJawaban1: String = ""
     @State private var inputJawaban2: String = ""
-//    @State private var inputAns1: String = ""
-//    @State private var inputAns2: String = ""
-//    @State private var inputAns3: String = ""
     @State var isClicked = false
     @State private var showAlert = false
     
@@ -122,7 +102,6 @@ struct QuestionScreen: View {
                         .foregroundColor(.white)
                         .font(.system(size: 18))
                         .padding(.all, 24)
-//                    Spacer()
                 }
                 .frame(maxWidth:.infinity, maxHeight: 280)
                 .background(Color ("PurpleLight"))
@@ -147,10 +126,7 @@ struct QuestionScreen: View {
                     
                     HStack {
                         FractionNotation (numerator: 1, denominator: 2)
-                        
-//                        AnswerFieldSteps(inputJawabanSteps: inputAns1)
-                        
-                        
+
                     }
                     
                 } else {
