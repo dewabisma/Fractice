@@ -26,6 +26,7 @@
 		4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D629DC593B00567324 /* SolutionsPrintExample.swift */; };
 		4EF0A4E829DC593C00567324 /* StrokeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D329DC593B00567324 /* StrokeTextView.swift */; };
 		4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */; };
+		9BA3D67F29DD7B91000F4E29 /* GenerateStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		4EF0A4E129DC593C00567324 /* ClosePromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosePromptView.swift; sourceTree = "<group>"; };
 		4EF0A4E329DC593C00567324 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
 		4EF0A4E429DC593C00567324 /* QuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreen.swift; sourceTree = "<group>"; };
+		9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				4EF0A4DE29DC593B00567324 /* ConvertDecimalToFraction.swift */,
 				4EF0A4DF29DC593B00567324 /* SortFraction.swift */,
 				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
+				9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */,
 				4EBCFED829DC5B55000F3F13 /* GenerateSolutionSteps.swift in Sources */,
 				4EF0A4B629DC590200567324 /* FracticeApp.swift in Sources */,
+				9BA3D67F29DD7B91000F4E29 /* GenerateStory.swift in Sources */,
 				4EBCFEDA29DC5BB3000F3F13 /* GetKPK.swift in Sources */,
 				4EBCFEE229DC5E02000F3F13 /* SettingScreen.swift in Sources */,
 				4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */,
