@@ -11,7 +11,7 @@ import SwiftUI
 struct FracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            QuestionScreen()
+            ContentView()
         }
     }
 }

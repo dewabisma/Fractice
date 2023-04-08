@@ -19,6 +19,7 @@
 		4EBCFEE129DC5E02000F3F13 /* QuestionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4E429DC593C00567324 /* QuestionScreen.swift */; };
 		4EBCFEE229DC5E02000F3F13 /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4E329DC593C00567324 /* SettingScreen.swift */; };
 		4EBCFEE429DC5E8D000F3F13 /* FractionShapeGenerationExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */; };
+		4EDC603D29E14F82003F832C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC603C29E14F82003F832C /* ContentView.swift */; };
 		4EF0A4B629DC590200567324 /* FracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4B529DC590200567324 /* FracticeApp.swift */; };
 		4EF0A4BA29DC590300567324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0A4B929DC590300567324 /* Assets.xcassets */; };
 		4EF0A4BD29DC590300567324 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0A4BC29DC590300567324 /* Preview Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4EBCFEE329DC5E8D000F3F13 /* FractionShapeGenerationExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionShapeGenerationExample.swift; sourceTree = "<group>"; };
+		4EDC603C29E14F82003F832C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4EF0A4B229DC590200567324 /* Fractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF0A4B529DC590200567324 /* FracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FracticeApp.swift; sourceTree = "<group>"; };
 		4EF0A4B929DC590300567324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4EF0A4B529DC590200567324 /* FracticeApp.swift */,
+				4EDC603C29E14F82003F832C /* ContentView.swift */,
 				4E9CC35729DD129F0006E9A5 /* Screens */,
 				4E9CC35629DD128A0006E9A5 /* Examples */,
 				4E9CC35529DD124D0006E9A5 /* Views */,
@@ -225,6 +228,7 @@
 				4EBCFEDD29DC5BB3000F3F13 /* CheckAnswer.swift in Sources */,
 				4EBCFEDF29DC5BB3000F3F13 /* ConvertDecimalToFraction.swift in Sources */,
 				4EBCFEE129DC5E02000F3F13 /* QuestionScreen.swift in Sources */,
+				4EDC603D29E14F82003F832C /* ContentView.swift in Sources */,
 				4EBCFEDC29DC5BB3000F3F13 /* SortFraction.swift in Sources */,
 				4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */,
 				4EBCFED829DC5B55000F3F13 /* GenerateSolutionSteps.swift in Sources */,

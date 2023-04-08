@@ -2,20 +2,20 @@
 //  ContentView.swift
 //  Fractice
 //
-//  Created by Bisma Mahendra I Dewa Gede on 04/04/23.
+//  Created by Bisma Mahendra I Dewa Gede on 08/04/23.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack() {
+            VStack {
+                QuestionScreen()
+            }
         }
-        .padding()
     }
 }
 

@@ -39,6 +39,8 @@ struct AnswerField: View {
 
 struct AnswerField1: View {
     @Binding var inputJawaban: String
+    var color:Color = Color.gray
+    
     var body: some View {
         
         TextField(
@@ -49,7 +51,7 @@ struct AnswerField1: View {
         .frame(width: 48, height: 48)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 2)
+                .stroke(color, lineWidth: 2)
         )
         .keyboardType(.numberPad)
     }
@@ -74,7 +76,7 @@ struct Steps: View {
                 RoundedRectangle(cornerRadius: 0)
                     .frame(maxWidth: 24)
                     .foregroundColor(Color ("PurpleLight")), alignment: .leading
-                           )
+            )
             .cornerRadius(9)
         } .padding(.bottom, 12)
     }
@@ -83,6 +85,7 @@ struct Steps: View {
 struct EqualizeDenominator: View {
     @Binding var pengali1:String
     @Binding var pengali2:String
+    
     var body: some View {
         HStack {
             VStack(spacing: 4) {
@@ -140,14 +143,14 @@ struct DoCalculation: View {
     @Binding var pembilang2:String
     @Binding var penyebut1:String
     @Binding var penyebut2:String
-
+    
     var body: some View {
         HStack {
             VStack(spacing: 4) {
                 HStack(spacing: 12) {
                     AnswerField(inputJawaban: $pembilang1)
                 }
-
+                
                 Image(systemName: "minus")
                     .resizable()
                     .frame(width: 50, height: 2)
@@ -156,16 +159,16 @@ struct DoCalculation: View {
                     AnswerField(inputJawaban: $penyebut1)
                 }
             }
-
+            
             Image(systemName: "plus")
                 .padding(.horizontal)
-
+            
             VStack{
                 VStack(spacing: 4) {
                     HStack(spacing: 12) {
                         AnswerField(inputJawaban: $pembilang2)
                     }
-
+                    
                     Image(systemName: "minus")
                         .resizable()
                         .frame(width: 50, height: 2)
@@ -210,167 +213,234 @@ struct SimplifyFraction: View {
 
 struct QuestionScreen: View {
     @State private var jawaban = Jawaban()
-    @State private var isClicked = false
+    @State private var isStepMode = true
     @State private var isCheck = false
+    @State private var isCorrect = false
     @State private var showAlert = false
+    @State private var stepOneDone:Bool = false
+    @State private var stepTwoDone = false
+    @State private var stepThreeDone = false
     
     var body: some View {
-            VStack {
-                HStack {
-                    Button {
-                        showAlert = true
-                    } label: {
-                        Image(systemName: "x.square.fill")
-                            .resizable()
-                            .frame(width: 27, height: 27)
-                            .foregroundColor(.red)
-                    } .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text("Kamu yakin nih mau keluar?"),
-                            message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
-                            primaryButton: .default(
-                                            Text("Keluar")
-                                        ),
-                            secondaryButton: .destructive(
-                                Text("Batal"))
-                        )
-                    }
-                    
-                    Spacer()
-                    
-                    Text ("Soal 1")
-                        .foregroundColor(Color("NavyText"))
-                        .font(.system(size: 20, weight: .heavy, design: .rounded))
-                    
-                    Spacer()
-                    
-                    Button {} label: {
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .frame(width: 27, height: 27)
-                            .foregroundColor(.gray)
-                    }
-                }.padding(.horizontal, 32)
-                
-                VStack {
-                    Text("Pak Budi, seorang pembuat sirup. Ia memiliki gula 614kg gula. Kemudian membeli lagi 412kg. Selanjutnya, gula tersebut dibuat sirup yang harganya 50 ribu. Banyaknya botol yang harus disediakan Pak Budi adalah …")
-        
-                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                        .lineSpacing(8)
-                        .foregroundColor(.white)
-                        .padding(.all, 24)
-                }
-                .frame(maxWidth:.infinity, maxHeight: 270)
-                .background(Color ("PurpleLight"))
-                .cornerRadius(20)
-                .padding(.horizontal, 32)
-                .padding(.vertical, 24)
-                .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
-                
-                
-                HStack {
-                    Text ("Jawaban")
-                        .foregroundColor(Color("OrangeText"))
-                        .font(.system(size: 20))
-                        .fontWeight(.heavy)
-                    Spacer()
-                } .padding(.leading, 32)
-                    .padding(.bottom, 20)
-                
-                if isClicked {
-                    Steps(title: "Step 1: Samakan penyebut")
-                        .padding(.horizontal, 32)
-
-                    Spacer()
-                    EqualizeDenominator(pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2)
-                    Spacer()
-
-//                    Steps(title: "Step 2: Hitunglah operasi aritmatika pecahan")
-//                        .padding(.horizontal, 32)
-//
-//                    Spacer()
-//                    DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2)
-//                    Spacer()
-//
-//                    Steps(title: "Step 3: Sederhanakan pecahan")
-//                        .padding(.horizontal, 32)
-//
-//                    Spacer()
-//                    SimplifyFraction(pembilang: $jawaban.numerator, penyebut: $jawaban.denominator, pembagi: $jawaban.dibagi)
-//                    Spacer()
-                    
-                } else {
-                    Spacer ()
-                    AnswerField1(inputJawaban: $jawaban.numerator)
-                    
-                    Image (systemName: "minus")
+        VStack {
+            HStack {
+                Button {
+                    showAlert = true
+                } label: {
+                    Image(systemName: "x.square.fill")
                         .resizable()
-                        .frame(width: 48, height: 2)
-                        .padding(.vertical, 12)
-                    
-                    AnswerField1(inputJawaban: $jawaban.denominator)
-                    Spacer()
+                        .frame(width: 27, height: 27)
+                        .foregroundColor(.red)
+                } .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Kamu yakin nih mau keluar?"),
+                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
+                        primaryButton: .default(
+                            Text("Keluar")
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Batal"))
+                    )
                 }
                 
                 Spacer()
-                HStack {
-                        Spacer()
-                        Button {
-                            isClicked = !isClicked
-                        } label: {
-                            if isClicked {
-                                Text ("LANGSUNG")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20))
-                                    .tracking(3)
-                                    .foregroundColor(Color ("OrangeText"))
-                            } else {
-                                Text ("TAHAPAN")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20))
-                                    .tracking(5)
-                                    .foregroundColor(Color ("OrangeText"))
-                            }
-                        }
-                        .frame(maxWidth: 168, maxHeight: 48)
-                        .overlay(
-                                        RoundedRectangle(cornerRadius: 30)
-                                            .stroke(Color("OrangeDark"), lineWidth: 2)
-                                )
-                        .background(.white)
-                        .cornerRadius(30)
-                        .padding(.bottom, 32)
-                    
-                        Spacer()
                 
-                        Button {
-                            isCheck = !isCheck
-                        } label: {
-                            if isClicked {
-                                Text ("CEK")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20))
-                                    .tracking(5)
-                                    .foregroundColor(Color .white)
-                            } else {
-                                Text ("JAWAB")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20))
-                                    .tracking(5)
-                                    .foregroundColor(Color .white)
-                            }
-                        }
-                        .frame(maxWidth: 168, maxHeight: 48)
-                        .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
-                        .cornerRadius(30)
-                        .padding(.bottom, 32)
+                Text ("Soal 1")
+                    .foregroundColor(Color("NavyText"))
+                    .font(.system(size: 20, weight: .heavy, design: .rounded))
+                
+                Spacer()
+                
+                Button {} label: {
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .frame(width: 27, height: 27)
+                        .foregroundColor(.gray)
+                }
+            }.padding(.horizontal, 32)
+            
+            VStack {
+                Text("Pak Budi, seorang pembuat sirup. Ia memiliki gula 614kg gula. Kemudian membeli lagi 412kg. Selanjutnya, gula tersebut dibuat sirup yang harganya 50 ribu. Banyaknya botol yang harus disediakan Pak Budi adalah …")
+                
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .lineSpacing(8)
+                    .foregroundColor(.white)
+                    .padding(.all, 24)
+            }
+            .frame(maxWidth:.infinity)
+            .frame(height:270)
+            .background(Color ("PurpleLight"))
+            .cornerRadius(20)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 24)
+            .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
+            
+            
+            HStack {
+                Text ("Jawaban")
+                    .foregroundColor(Color("OrangeText"))
+                    .font(.system(size: 20))
+                    .fontWeight(.heavy)
+                Spacer()
+            } .padding(.leading, 32)
+                .padding(.bottom, 20)
+            
+            if isStepMode {
+                ScrollView {
+                    Group {
+                        Steps(title: "Step 1: Samakan penyebut")
+                            .padding(.horizontal, 32)
+                        
+                        Spacer()
+                        
+                        EqualizeDenominator(pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2)
+                        
                         Spacer()
                     }
-                    .frame(maxWidth:.infinity, maxHeight: 130)
-                    .background(.white)
-                    .cornerRadius(20)
-                    .shadow(color: Color ("GrayBlur"), radius: 5, x:0, y:-3)
+                    
+                    if stepOneDone {
+                        Group {
+                            Steps(title: "Step 2: Hitunglah operasi aritmatika pecahan")
+                                .padding(.horizontal, 32)
+                            
+                            Spacer()
+                            
+                            DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2)
+                            
+                            Spacer()
+                        }
+                        
+                    }
+                    
+                    if stepTwoDone {
+                        Group {
+                            Steps(title: "Step 3: Sederhanakan pecahan")
+                                .padding(.horizontal, 32)
+                            
+                            Spacer()
+                            
+                            SimplifyFraction(pembilang: $jawaban.numerator, penyebut: $jawaban.denominator, pembagi: $jawaban.dibagi)
+                            
+                            Spacer()
+                        }
+                    }
+                    
+                    if stepThreeDone {
+                        Group {
+                            Steps(title: "Step 4: Masukkan Jawaban")
+                                .padding(.horizontal, 32)
+                            
+                            Spacer ()
+                            
+                            AnswerField1(inputJawaban: $jawaban.numerator, color: isCheck ? ((isCorrect) ? Color.green: Color.red) : Color.black)
+                                .foregroundColor(isCheck ? Color.green : Color.black)
+                            
+                            Image (systemName: "minus")
+                                .resizable()
+                                .frame(width: 48, height: 2)
+                                .padding(.vertical, 12)
+                            
+                            AnswerField1(inputJawaban: $jawaban.denominator, color: isCheck ? ((isCorrect) ? Color.green: Color.red) : Color.black)
+                                .foregroundColor(isCheck ? Color.green : Color.black)
+                            
+                            Spacer()
+                        }
+                    }
+                }
+            } else {
+                Spacer ()
+                AnswerField1(inputJawaban: $jawaban.numerator)
+                
+                Image (systemName: "minus")
+                    .resizable()
+                    .frame(width: 48, height: 2)
+                    .padding(.vertical, 12)
+                
+                AnswerField1(inputJawaban: $jawaban.denominator)
+                Spacer()
             }
+            
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    isStepMode = !isStepMode
+                } label: {
+                    if isStepMode {
+                        Text ("LANGSUNG")
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .tracking(3)
+                            .foregroundColor(Color ("OrangeText"))
+                    } else {
+                        Text ("TAHAPAN")
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .tracking(5)
+                            .foregroundColor(Color ("OrangeText"))
+                    }
+                }
+                .frame(maxWidth: 168, maxHeight: 48)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Color("OrangeDark"), lineWidth: 2)
+                )
+                .background(.white)
+                .cornerRadius(30)
+                .padding(.bottom, 32)
+                
+                Spacer()
+                
+                
+                Button {
+                    if !isStepMode {
+                        isCheck = !isCheck
+                    }
+                    
+                    // Check step dari yg paling akhir ke awal
+                    if stepThreeDone {
+                        isCheck = !isCheck
+                    }
+                    
+                    if stepTwoDone && !stepThreeDone {
+                        stepThreeDone = !stepThreeDone
+                    }
+                    
+                    if stepOneDone && !stepTwoDone {
+                        stepTwoDone = !stepTwoDone
+                    }
+                    
+                    if !stepOneDone {
+                        stepOneDone = !stepOneDone
+                    }
+                } label: {
+                    if isStepMode && !stepThreeDone {
+                        Text ("CEK")
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .tracking(5)
+                            .foregroundColor(Color .white)
+                    } else {
+                        Text ("JAWAB")
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .tracking(5)
+                            .foregroundColor(Color .white)
+                    }
+                }
+                .frame(maxWidth: 168, maxHeight: 48)
+                .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
+                .cornerRadius(30)
+                .padding(.bottom, 32)
+                
+                Spacer()
+                
+            }
+            .frame(maxWidth:.infinity, maxHeight: 130)
+            .background(.white)
+            .cornerRadius(20)
+            .shadow(color: Color ("GrayBlur"), radius: 5, x:0, y:-3)
+        }
         .ignoresSafeArea(.all)
         .frame(maxHeight: .infinity)
         .background(.white)
@@ -380,8 +450,9 @@ struct QuestionScreen: View {
 
 
 struct QuestionScreen_Previews: PreviewProvider {
+
     static var previews: some View {
-        QuestionScreen()
+            QuestionScreen()
     }
 }
 
