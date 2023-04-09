@@ -28,6 +28,7 @@
 		4EF0A4E829DC593C00567324 /* StrokeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D329DC593B00567324 /* StrokeTextView.swift */; };
 		4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */; };
 		9BA3D67F29DD7B91000F4E29 /* GenerateStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */; };
+		9BA3D69F29E2BC1D000F4E29 /* CheckSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		4EF0A4E329DC593C00567324 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
 		4EF0A4E429DC593C00567324 /* QuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreen.swift; sourceTree = "<group>"; };
 		9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStory.swift; sourceTree = "<group>"; };
+		9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSteps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				4EF0A4DF29DC593B00567324 /* SortFraction.swift */,
 				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
 				9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */,
+				9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				4EBCFEE429DC5E8D000F3F13 /* FractionShapeGenerationExample.swift in Sources */,
 				4EBCFEE029DC5DED000F3F13 /* ClosePromptView.swift in Sources */,
 				4EBCFEDE29DC5BB3000F3F13 /* GenerateOperand.swift in Sources */,
+				9BA3D69F29E2BC1D000F4E29 /* CheckSteps.swift in Sources */,
 				4EF0A4E629DC593C00567324 /* ReviewScreen.swift in Sources */,
 				4EBCFEDD29DC5BB3000F3F13 /* CheckAnswer.swift in Sources */,
 				4EBCFEDF29DC5BB3000F3F13 /* ConvertDecimalToFraction.swift in Sources */,
