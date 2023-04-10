@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ModeSoal:View {
-    @State var vibrate:Bool
+    @Binding var vibrate:Bool
     var title:String
     var body: some View {
         HStack{
@@ -39,6 +39,8 @@ struct SettingScreen: View {
     @State private var vibrateOnBilangan = false
     @State private var vibrateOnCerita = false
     @State private var vibrateOnGambar = false
+    @Binding var isPresented:Bool
+    @Binding var setting:QuestionType
     
     var body: some View {
         ZStack {
@@ -64,14 +66,17 @@ struct SettingScreen: View {
                         .foregroundColor(Color("OrangeDark"))
                         .padding(.bottom,40)
                         
-                    ModeSoal(vibrate: vibrateOnBilangan,title:"Soal Bilangan Pecahan")
+                    ModeSoal(vibrate: $setting.isBilangan,title:"Soal Bilangan Pecahan")
                     
-                    ModeSoal(vibrate: vibrateOnCerita,title:"Soal Cerita Pecahan")
+                    ModeSoal(vibrate: $setting.isCerita,title:"Soal Cerita Pecahan")
                     
-                    ModeSoal(vibrate: vibrateOnGambar,title:"Soal Gambar Pecahan")
+                    ModeSoal(vibrate: $setting.isGambar,title:"Soal Gambar Pecahan")
                    
                     
-                    Button("Mulai!") { print ("button tapped")}
+                    Button("Mulai!") {
+                        isPresented.toggle()
+
+                    }
                         .tracking(5)
                         .foregroundColor(.white)
                         .fontWeight(.heavy)
@@ -94,6 +99,6 @@ struct SettingScreen: View {
 
 struct SettingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SettingScreen()
+        SettingScreen(isPresented: .constant(false),setting: .constant(QuestionType(isBilangan: true,isCerita: false,isGambar: false)))
     }
 }

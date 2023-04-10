@@ -19,6 +19,12 @@ struct Jawaban {
     var dibagi: String = ""
 }
 
+struct QuestionType{
+    var isBilangan:Bool = false
+    var isCerita:Bool = false
+    var isGambar:Bool = false
+}
+
 struct AnswerField: View {
     @Binding var inputJawaban: String
     var body: some View {
@@ -220,7 +226,11 @@ struct QuestionScreen: View {
     @State private var stepOneDone:Bool = false
     @State private var stepTwoDone = false
     @State private var stepThreeDone = false
-    
+    @State private var isPresented = false
+    @State private var setting:QuestionType = QuestionType(isBilangan: true,isCerita: false,isGambar: false)
+    init(){
+        print("masukcuk")
+    }
     var body: some View {
         VStack {
             HStack {
@@ -251,11 +261,15 @@ struct QuestionScreen: View {
                 
                 Spacer()
                 
-                Button {} label: {
+                Button {
+                    isPresented.toggle()
+                } label: {
                     Image(systemName: "gearshape.fill")
                         .resizable()
                         .frame(width: 27, height: 27)
                         .foregroundColor(.gray)
+                }.fullScreenCover(isPresented: $isPresented){
+                    SettingScreen(isPresented: $isPresented, setting:$setting)
                 }
             }.padding(.horizontal, 32)
             
