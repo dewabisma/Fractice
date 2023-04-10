@@ -44,10 +44,11 @@ struct SettingScreen: View {
         ZStack {
             VStack (spacing:50) {
                 VStack {
-                    Spacer ()
                     Image("LionSmile")
                         .resizable()
-                        .frame(width: 125, height:100)
+                        .scaledToFit()
+                        .frame(maxWidth: 200)
+//                        .background(.red)
                     Text("FRACTICE")
                         .font(.system(size: 26))
                         .foregroundColor(Color("OrangeLight"))
@@ -55,6 +56,7 @@ struct SettingScreen: View {
                         .tracking(5)
                         .shadow(color:Color("PurpleDark"), radius: 0.1, x:0, y:5)
                 }
+//                .background(.yellow)
                 .frame(maxWidth:.infinity,maxHeight: 200)
 
                 VStack{
@@ -85,7 +87,7 @@ struct SettingScreen: View {
                 .background(Color.white)
                 .cornerRadius(20)
             }
-            .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.bottom)
             .frame( maxHeight: .infinity)
             .background(Color("PurpleLight"))
            
