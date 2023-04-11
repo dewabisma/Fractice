@@ -13,6 +13,10 @@ func checkIfFractionValEqual(deci1:Double, deci2:Double) -> Bool {
     return diff.isLess(than: 0.001)
 }
 
+func checkIfDenominatorEqual(deno1: Int, deno2: Int) -> Bool {
+    return deno1 == deno2
+}
+
 func checkAnswer(userAnswer:Double, operand:Operand, f1:Double, f2:Double) -> Bool {
     var problemAnswer: Double
     
