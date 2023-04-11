@@ -25,6 +25,69 @@ struct QuestionType{
     var isGambar:Bool = false
 }
 
+struct soalPecahanView: View{
+    @Binding var fraction:FractionPair
+    
+    var body: some View{
+        HStack {
+            Spacer()
+            VStack{
+                Text("\(fraction.f1.numerator)")
+                    .font(.system(size: 36,weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+                Image(systemName: "minus")
+                    .resizable()
+                    .frame(width:40, height:4)
+                    .foregroundColor(.white)
+                Text("\(fraction.f1.denominator)")
+                    .font(.system(size: 36,weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+            }
+            Spacer()
+                .frame(width: 30)
+            Image(systemName: "plus")
+                .resizable()
+                .frame(width:30, height:30)
+                .foregroundColor(.white)
+            Spacer()
+                .frame(width: 30)
+            
+            VStack{
+                Text("\(fraction.f2.numerator)")
+                    .font(.system(size: 36,weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+                Image(systemName: "minus")
+                    .resizable()
+                    .frame(width:40, height:4)
+                    .foregroundColor(.white)
+                Text("\(fraction.f2.denominator)")
+                    .font(.system(size: 36,weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+            }
+            Spacer()
+        }
+    }
+}
+
+struct soalGambarView: View{
+    @Binding var fraction:FractionPair
+    
+    var body: some View{
+        HStack {
+            Spacer()
+            FractionShape(numerator: fraction.f1.numerator, denominator: fraction.f1.denominator)
+            
+            Spacer()
+            
+            Text("+").font(.largeTitle)
+            
+            Spacer()
+            
+            FractionShape(numerator: fraction.f2.numerator, denominator: fraction.f2.denominator)
+            Spacer()
+        }
+    }
+}
 struct AnswerField: View {
     @Binding var inputJawaban: String
     var body: some View {
@@ -228,9 +291,8 @@ struct QuestionScreen: View {
     @State private var stepThreeDone = false
     @State private var isPresented = false
     @State private var setting:QuestionType = QuestionType(isBilangan: true,isCerita: false,isGambar: false)
-    init(){
-        print("masukcuk")
-    }
+    @State private var Soal:soal = generateSoal()
+   
     var body: some View {
         VStack {
             HStack {
@@ -274,12 +336,21 @@ struct QuestionScreen: View {
             }.padding(.horizontal, 32)
             
             VStack {
-                Text("Pak Budi, seorang pembuat sirup. Ia memiliki gula 614kg gula. Kemudian membeli lagi 412kg. Selanjutnya, gula tersebut dibuat sirup yang harganya 50 ribu. Banyaknya botol yang harus disediakan Pak Budi adalah …")
-                
-                    .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    .lineSpacing(8)
-                    .foregroundColor(.white)
-                    .padding(.all, 24)
+                if(Soal.questionType == .cerita){
+                    Text(.init(Soal.soalCerita!))
+                        .font(.system(size: 18,weight: .regular, design: .rounded))
+                        .lineSpacing(8)
+                        .foregroundColor(.white)
+                        .padding(.all, 24)
+                       
+                }
+                else if(Soal.questionType == .bilangan){
+                    soalPecahanView(fraction: $Soal.fractionPair)
+                }
+                else if(Soal.questionType == .gambar){
+                    soalGambarView(fraction: $Soal.fractionPair)
+                }
+               
             }
             .frame(maxWidth:.infinity)
             .frame(height:270)
@@ -288,6 +359,14 @@ struct QuestionScreen: View {
             .padding(.horizontal, 32)
             .padding(.vertical, 24)
             .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
+            .onChange(of: isPresented) { newValue in
+                
+                if !newValue {
+                    print(setting)
+                    print(newValue)
+                }
+             
+            }
             
             
             HStack {

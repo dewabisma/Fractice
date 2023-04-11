@@ -29,6 +29,7 @@
 		4EF0A4E929DC593C00567324 /* FractionShapeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A4D429DC593B00567324 /* FractionShapeGeneratorView.swift */; };
 		9BA3D67F29DD7B91000F4E29 /* GenerateStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */; };
 		9BA3D69F29E2BC1D000F4E29 /* CheckSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */; };
+		9BC0FF9B29E4F665006951A6 /* GenerateSoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0FF9A29E4F665006951A6 /* GenerateSoal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		4EF0A4E429DC593C00567324 /* QuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreen.swift; sourceTree = "<group>"; };
 		9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStory.swift; sourceTree = "<group>"; };
 		9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSteps.swift; sourceTree = "<group>"; };
+		9BC0FF9A29E4F665006951A6 /* GenerateSoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSoal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				4EF0A4D929DC593B00567324 /* GenerateSolutionSteps.swift */,
 				9BA3D67E29DD7B91000F4E29 /* GenerateStory.swift */,
 				9BA3D69E29E2BC1D000F4E29 /* CheckSteps.swift */,
+				9BC0FF9A29E4F665006951A6 /* GenerateSoal.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				4EBCFEDD29DC5BB3000F3F13 /* CheckAnswer.swift in Sources */,
 				4EBCFEDF29DC5BB3000F3F13 /* ConvertDecimalToFraction.swift in Sources */,
 				4EBCFEE129DC5E02000F3F13 /* QuestionScreen.swift in Sources */,
+				9BC0FF9B29E4F665006951A6 /* GenerateSoal.swift in Sources */,
 				4EDC603D29E14F82003F832C /* ContentView.swift in Sources */,
 				4EBCFEDC29DC5BB3000F3F13 /* SortFraction.swift in Sources */,
 				4EF0A4E729DC593C00567324 /* SolutionsPrintExample.swift in Sources */,
