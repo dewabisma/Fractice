@@ -12,7 +12,7 @@ typealias TimesFactors = (t1:Int, t2:Int)
 typealias SimplifyProperties = (operationResult: Fraction, fpb: Int)
 
 func generateSolutionSteps(f1:Fraction, f2:Fraction, operand:Operand) -> FractionSolutions {
-    let isDenominatorEqual:Bool = checkIfFractionValEqual(deci1: f1.decimal, deci2: f2.decimal)
+    let isDenominatorEqual:Bool = checkIfDenominatorEqual(deno1: f1.denominator, deno2: f2.denominator)
     var canBeSimplified:Bool = false
     
     var fraction1:Fraction = f1
