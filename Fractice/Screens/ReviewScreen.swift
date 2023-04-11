@@ -27,23 +27,25 @@ struct StepHeading: View {
     var paddingTop: CGFloat = 24.0
     
     var body: some View {
-        HStack {
-            Text(title)
-                .font(.system(size: 14))
-                .fontWeight(.semibold)
-                .padding(.vertical, 8)
-                .padding(.leading, 16)
-            
-            Spacer()
-        }
-        .frame(maxWidth:.infinity)
-        .background(.gray)
-        .cornerRadius(9)
-        .padding(.top, paddingTop)
+        VStack{
+            HStack {
+                Text(title)
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+                    .padding(.vertical, 8)
+                    .padding(.leading, 40)
+                Spacer()
+            }
+            .frame(maxWidth:.infinity)
+            .background(Color("PurpleLight"))
+            .cornerRadius(9)
+        } .padding(.bottom, 12)
     }
 }
 
 struct ReviewScreen: View {
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -53,6 +55,10 @@ struct ReviewScreen: View {
                         
                     } label: {
                         Image(systemName: "x.square.fill")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.red)
+                        
                     }
                     
                     Spacer()
@@ -61,155 +67,171 @@ struct ReviewScreen: View {
                         
                     } label: {
                         Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.gray)
                     }
                 }
                 .font(.system(size: 38))
                 .foregroundColor(.gray)
+                .padding(.horizontal, 32)
                 
                 // Heading
-                HStack(spacing: 18) {
-                    StrokeText(text: "Review \nyour problem", width: 1, color: .white)
-                        .font(.system(size: 20))
-                        .fontWeight(.heavy)
+                HStack {
+                    Text("Ayo Cek Pemahaman Kamu!")
+                        .font(.system(size: 20, weight: .heavy, design: .rounded))
+                        .lineSpacing(5)
+                        .foregroundColor(.white)
                         .padding(.vertical, 24)
+                        .padding(.leading, 24)
                     
-                    Image("logo")
+                    Image("LionSmile")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 89)
-                        .padding(.vertical, 24)
+                        .frame(width: 96)
+                        .padding(.all, 24)
                     
                 }
                 .frame(maxWidth:.infinity)
-                .background(.gray)
+                .background(Color ("PurpleLight"))
                 .cornerRadius(20)
-                .padding(.top, 24)
+                .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
+                .padding(.horizontal, 32)
+                .padding(.vertical, 24)
                 
                 ScrollView {
                     // StepWrapper
                     VStack {
-                        // Sub Heading
-                        StepHeading(title: "Step 1: Equalize Denominator", paddingTop: 0)
-                        
-                        // Steps
-                        HStack(spacing: 12) {
-                            FractionNotation(numerator: 1, denominator: 2)
+                        SolutionsPrintExample()
+                        HStack {
+                            Spacer()
                             
-                            Image(systemName: "plus")
+                            Button {
+                                
+                            } label: {
+                                Text("NEXT")
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 20))
+                                    .tracking(5)
+                                    .foregroundColor(Color .white)
+                            }
+                            .frame(width: 168, height: 48)
+                            .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
+                            .cornerRadius(30)
+                            .padding(.vertical, 32)
                             
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "equal")
-                            
-                            FractionNotation(numerator: 2, denominator: 2)
+                            Spacer()
                         }
+                        //                        // Sub Heading
+                        //                        StepHeading(title: "Step 1: Equalize Denominator", paddingTop: 0)
+                        //
+                        //                        // Steps
+                        //                        HStack(spacing: 12) {
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "plus")
+                        //
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "equal")
+                        //
+                        //                            FractionNotation(numerator: 2, denominator: 2)
+                        //                        }
+                        //                    }
+                        //
+                        //                    VStack {
+                        //                        // Sub Heading
+                        //                        StepHeading(title: "Step 2: Calculate Problem")
+                        //
+                        //                        // Steps
+                        //                        HStack(spacing: 12) {
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "plus")
+                        //
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "equal")
+                        //
+                        //                            FractionNotation(numerator: 2, denominator: 2)
+                        //                        }
+                        //                    }
+                        //
+                        //                    VStack {
+                        //                        // Sub Heading
+                        //                        StepHeading(title: "Step 3: Calculate Problem")
+                        //
+                        //                        // Steps
+                        //                        HStack(spacing: 12) {
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "plus")
+                        //
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "equal")
+                        //
+                        //                            FractionNotation(numerator: 2, denominator: 2)
+                        //                        }
+                        //                    }
+                        //
+                        //                    VStack {
+                        //                        // Sub Heading
+                        //                        StepHeading(title: "Step 4: Calculate Problem")
+                        //
+                        //                        // Steps
+                        //                        HStack(spacing: 12) {
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "plus")
+                        //
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "equal")
+                        //
+                        //                            FractionNotation(numerator: 2, denominator: 2)
+                        //                        }
+                        //                    }
+                        //
+                        //                    VStack {
+                        //                        // Sub Heading
+                        //                        StepHeading(title: "Step 5: Calculate Problem")
+                        //
+                        //                        // Steps
+                        //                        HStack(spacing: 12) {
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "plus")
+                        //
+                        //                            FractionNotation(numerator: 1, denominator: 2)
+                        //
+                        //                            Image(systemName: "equal")
+                        //
+                        //                            FractionNotation(numerator: 2, denominator: 2)
+                        //                        }
+                                            }
                     }
+                    .padding(.top, 24)
+                    .padding(.horizontal, 32)
                     
-                    VStack {
-                        // Sub Heading
-                        StepHeading(title: "Step 2: Calculate Problem")
+                    HStack {
+                        Spacer()
+
                         
-                        // Steps
-                        HStack(spacing: 12) {
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "plus")
-                            
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "equal")
-                            
-                            FractionNotation(numerator: 2, denominator: 2)
-                        }
                     }
-                    
-                    VStack {
-                        // Sub Heading
-                        StepHeading(title: "Step 3: Calculate Problem")
-                        
-                        // Steps
-                        HStack(spacing: 12) {
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "plus")
-                            
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "equal")
-                            
-                            FractionNotation(numerator: 2, denominator: 2)
-                        }
-                    }
-                    
-                    VStack {
-                        // Sub Heading
-                        StepHeading(title: "Step 4: Calculate Problem")
-                        
-                        // Steps
-                        HStack(spacing: 12) {
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "plus")
-                            
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "equal")
-                            
-                            FractionNotation(numerator: 2, denominator: 2)
-                        }
-                    }
-                    
-                    VStack {
-                        // Sub Heading
-                        StepHeading(title: "Step 5: Calculate Problem")
-                        
-                        // Steps
-                        HStack(spacing: 12) {
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "plus")
-                            
-                            FractionNotation(numerator: 1, denominator: 2)
-                            
-                            Image(systemName: "equal")
-                            
-                            FractionNotation(numerator: 2, denominator: 2)
-                        }
-                    }
-                }
-                .padding(.top, 24)
-                
-                Spacer()
-                
-                // Button Next
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("Next")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
-                            .fontWeight(.heavy)
-                            .padding(.horizontal, 32)
-                            .padding(.vertical, 8)
-                    }
-                    .background(LinearGradient(
-                        gradient: Gradient(colors: [.black, .gray]),
-                        startPoint: .top,
-                        endPoint: .bottom)
-                    )
+                    .frame(maxWidth:.infinity, maxHeight: 80)
+                    .background(.white)
                     .cornerRadius(20)
+                    
                 }
+                .ignoresSafeArea(.all)
+                .frame(maxHeight: .infinity)
+                .background(.white)
                 .padding(.top, 24)
-                .padding(.bottom, 48)
-                
-            }
         }
-        .padding(.horizontal, 32)
+            
+        }
     }
-}
 
 struct ReviewScreen_Previews: PreviewProvider {
     static var previews: some View {

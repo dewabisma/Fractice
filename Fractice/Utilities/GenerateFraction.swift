@@ -25,6 +25,21 @@ func multiplyFractionNotations(fraction:Fraction, timesFactor:Int) -> Fraction {
     return (newNum, newDen, newDeci)
 }
 
+func finalAnswer (f1: Fraction, f2: Fraction, operand: Operand) -> Fraction {
+    
+    var finalAns: Fraction
+    
+    switch (operand) {
+    case .plus:
+        finalAns = convertDecimalToFraction(decimalVal: f1.decimal + f2.decimal)
+        
+    case .minus:
+        finalAns = convertDecimalToFraction(decimalVal: f1.decimal - f2.decimal)
+    }
+    
+    return (finalAns)
+}
+
 func calculateFractionsOperation(f1:Fraction, f2:Fraction, operand:Operand) -> Fraction {
     var resultNum:Int
     
