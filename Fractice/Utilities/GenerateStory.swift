@@ -48,8 +48,8 @@ func generateSoalCerita (F1:Fraction,F2:Fraction) -> soalCerita{
     
     let pecahan1 = generateNamaPecahan(F: F1)
     let pecahan2 = generateNamaPecahan(F: F2)
-    cerita = cerita.replacingOccurrences(of: "$1", with: "\(pecahan1)")
-    cerita = cerita.replacingOccurrences(of: "$2", with: "\(pecahan2)")
+    cerita = cerita.replacingOccurrences(of: "$1", with: "__\(pecahan1)__")
+    cerita = cerita.replacingOccurrences(of: "$2", with: "__\(pecahan2)__")
     
     return (cerita,operand)
 }

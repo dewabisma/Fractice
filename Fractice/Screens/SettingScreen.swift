@@ -20,7 +20,7 @@ struct ModeSoal:View {
             Spacer()
             
             Toggle(isOn: $vibrate) {
-                }
+            }
             
             .frame(maxWidth: 50)
             .padding(10)
@@ -69,10 +69,13 @@ struct SettingScreen: View {
                         .padding(.bottom,40)
                         
                     ModeSoal(vibrate: $setting.isBilangan,title:"Soal Bilangan Pecahan")
+                      
                     
                     ModeSoal(vibrate: $setting.isCerita,title:"Soal Cerita Pecahan")
                     
+                    
                     ModeSoal(vibrate: $setting.isGambar,title:"Soal Gambar Pecahan")
+                       
                    
                     
                     Button("Mulai!") {

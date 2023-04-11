@@ -26,27 +26,28 @@ struct FractionShape:View {
     var denominator:Int
     
     let columns: [GridItem] = [
-        GridItem(.fixed(20), spacing: 1, alignment: nil),
-        GridItem(.fixed(20), spacing: 1, alignment: nil),
-        GridItem(.fixed(20), spacing: 1, alignment: nil),
-        GridItem(.fixed(20), spacing: 1, alignment: nil),
-        GridItem(.fixed(20), spacing: 1, alignment: nil)
+        GridItem(.fixed(30), spacing: 4, alignment: nil),
+        GridItem(.fixed(30), spacing: 4, alignment: nil),
+        GridItem(.fixed(30), spacing: 4, alignment: nil),
+//        GridItem(.fixed(30), spacing: 4, alignment: nil),
+//        GridItem(.fixed(30), spacing: 4, alignment: nil)
     ]
     
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 2) {
+        LazyVGrid(columns: columns, spacing: 4) {
             ForEach(0..<numerator, id: \.self) { index in
                 Square()
-                    .fill(.red)
-                    .frame(width:20, height: 20)
+                    .fill(.white)
+                   
+                    .frame(width:30, height: 30)
                     .id("numerator\(index)")
             }
             
             
             ForEach(0..<abs(denominator - numerator), id: \.self ) { index in
                 Square()
-                    .stroke(.red, lineWidth: 2)
-                    .frame(width:18, height: 18)
+                    .stroke(.white, lineWidth: 2)
+                    .frame(width:28, height: 28)
                     .id("denominator\(index)")
             }
         }
