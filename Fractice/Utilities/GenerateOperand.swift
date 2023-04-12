@@ -8,12 +8,12 @@
 import Foundation
 
 enum Operand:String, CaseIterable {
-    case plus = "+"
-    case minus = "-"
+    case plus = "plus"
+    case minus = "minus"
 }
 
-func generateOperand() -> Operand.RawValue {
-    let op = Operand.allCases.randomElement()!.rawValue
+func generateOperand() -> Operand {
+    let op = Operand.allCases.randomElement()!
     
     return op
 }

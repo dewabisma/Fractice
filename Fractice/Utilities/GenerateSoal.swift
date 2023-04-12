@@ -7,23 +7,36 @@
 
 import Foundation
 
-enum EnumSoal:CaseIterable {
-    case cerita, gambar , bilangan
+enum EnumSoal:Int {
+    case bilangan, cerita , gambar
 }
-typealias soal = (fractionPair:FractionPair,operand:Operand.RawValue,questionType:EnumSoal,soalCerita:String?)
+typealias soal = (fractionPair:FractionPair,operand:Operand,questionType:EnumSoal,soalCerita:String?)
 
-func generateSoal () ->soal{
+
+func generateSoal (setting:QuestionType) ->soal{
     
     let fractionPair = generateFractionPair()
     var operand = generateOperand()
-    let questionType = EnumSoal.allCases.randomElement()!
-//    let questionType = EnumSoal.gambar
+    var arrTypeSoal:[Int] = []
+    
+    if(setting.isBilangan){
+        arrTypeSoal.append(0)
+    }
+    if(setting.isCerita){
+        arrTypeSoal.append(1)
+    }
+    if(setting.isGambar){
+        arrTypeSoal.append(2)
+    }
+    
+    let randNumberSoal = Int.random(in: 0..<arrTypeSoal.count)
+    let questionType = EnumSoal(rawValue: arrTypeSoal[randNumberSoal])!
     var soalCerita:String?
     
     if(questionType == .cerita){
         let generatedCerita = generateSoalCerita(F1: fractionPair.f1, F2: fractionPair.f2)
         soalCerita = generatedCerita.cerita
-        operand = generatedCerita.operand.rawValue
+        operand = generatedCerita.operand
     }
    
     

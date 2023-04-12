@@ -36,11 +36,9 @@ struct ModeSoal:View {
 }
 
 struct SettingScreen: View {
-    @State private var vibrateOnBilangan = false
-    @State private var vibrateOnCerita = false
-    @State private var vibrateOnGambar = false
     @Binding var isPresented:Bool
     @Binding var setting:QuestionType
+    @State var isShowingAlert = false
     
     var body: some View {
         ZStack {
@@ -62,7 +60,7 @@ struct SettingScreen: View {
                 .frame(maxWidth:.infinity,maxHeight: 200)
 
                 VStack{
-                    Text("Pilih Tipe Soal Pecahan Kamu!")
+                    Text("Pilih Tipe Soal Pecahan !")
                         .font(.system(size: 20))
                         .fontWeight(.heavy)
                         .foregroundColor(Color("OrangeDark"))
@@ -79,15 +77,23 @@ struct SettingScreen: View {
                    
                     
                     Button("Mulai!") {
-                        isPresented.toggle()
-
+                        if(!setting.isGambar && !setting.isCerita && !setting.isBilangan){
+                            isShowingAlert.toggle()
+                        }
+                        else{
+                            isPresented.toggle()
+                        }
                     }
+                        .alert("Pilih salah satu opsi", isPresented: $isShowingAlert) {
+                                Button("OK", role: .cancel) { }
+                        }
                         .tracking(5)
                         .foregroundColor(.white)
                         .fontWeight(.heavy)
                         .frame(maxWidth: 132, maxHeight: 48)
                         .background(LinearGradient(colors:[Color("OrangeDark"),Color("OrangeLight")], startPoint:.bottom, endPoint:.top))
                         .cornerRadius(30)
+                        
                     
                         
                 }

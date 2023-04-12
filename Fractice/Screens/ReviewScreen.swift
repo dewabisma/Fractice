@@ -44,8 +44,6 @@ struct StepHeading: View {
 }
 
 struct ReviewScreen: View {
-    
-    
     var body: some View {
         NavigationView {
             VStack {
