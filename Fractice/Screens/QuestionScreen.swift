@@ -14,18 +14,36 @@ import SwiftUI
 // dibagi -> jawaban pembagi untuk penyederhanaan pecahan
 struct Jawaban {
     var numerator:String = ""
+    var isNumerator:Bool = true
     var numerator1: String = ""
+    var isNumerator1:Bool = true
     var numerator2:String = ""
+    var isNumerator2:Bool = true
     var numerator3:String = ""
+    var isNumerator3:Bool = true
     var numerator4:String = ""
+    var isNumerator4:Bool = true
     var denominator:String = ""
+    var isDenominator:Bool = true
     var denominator1: String = ""
+    var isDenominator1:Bool = true
     var denominator2:String = ""
+    var isDenominator2:Bool = true
     var denominator3:String = ""
+    var isDenominator3:Bool = true
     var denominator4:String = ""
+    var isDenominator4:Bool = true
     var dikali1: String = ""
+    var isDikali1:Bool = true
     var dikali2: String = ""
+    var isDikali2:Bool = true
     var dibagi: String = ""
+    var isDibagi:Bool = true
+    var isCheckEqualize:Bool = true
+    var isCheckCalculationTimesFactor:Bool = true
+    var isCheckCalculation:Bool = true
+    var isCheckSimplified:Bool = true
+    var isCheckFinalAnswerSimplified:Bool = true
 }
 
 struct QuestionType{
@@ -119,6 +137,7 @@ struct soalGambarView: View{
 struct AnswerField: View {
     @Binding var inputJawaban: String
     var isDisabled:Bool = false
+    var isCorrect = true
     var body: some View {
         
         TextField(
@@ -131,6 +150,8 @@ struct AnswerField: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.gray, lineWidth: 2)
         )
+        .background(RoundedRectangle(cornerRadius: 10).fill(isCorrect == true ? Color.white : Color.red))
+//        .foregroundColor(isCorrect == true ? Color.black : Color.red)
         .keyboardType(.numberPad)
         .disabled(isDisabled)
     }
@@ -138,6 +159,7 @@ struct AnswerField: View {
 
 struct AnswerField1: View {
     @Binding var inputJawaban: String
+    var isCorrect = true
     var color:Color = Color.gray
     
     var body: some View {
@@ -153,6 +175,7 @@ struct AnswerField1: View {
                 .stroke(color, lineWidth: 2)
         )
         .keyboardType(.numberPad)
+        .background(RoundedRectangle(cornerRadius: 10).fill(isCorrect == true ? Color.white : Color.red))
     }
 }
 
@@ -187,6 +210,7 @@ struct EqualizeDenominator: View {
     @Binding var pengali2:String
     var operand:String
     var isDisbaled = false
+    var jawaban:Jawaban
     
     
     var body: some View {
@@ -196,7 +220,7 @@ struct EqualizeDenominator: View {
                     Text("\(fraction.f1.numerator)")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                     Image(systemName: "multiply")
-                    AnswerField(inputJawaban: $pengali1, isDisabled: isDisbaled)
+                    AnswerField(inputJawaban: $pengali1, isDisabled: isDisbaled,isCorrect:jawaban.isDikali1)
                 }
                 
                 Image (systemName: "minus")
@@ -208,7 +232,7 @@ struct EqualizeDenominator: View {
                     Text("\(fraction.f1.denominator)")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                     Image(systemName: "multiply")
-                    AnswerField(inputJawaban: $pengali1,isDisabled: isDisbaled)
+                    AnswerField(inputJawaban: $pengali1,isDisabled: isDisbaled,isCorrect:jawaban.isDikali1)
                 }
             }
             
@@ -221,7 +245,7 @@ struct EqualizeDenominator: View {
                         Text("\(fraction.f2.numerator)")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         Image(systemName: "multiply")
-                        AnswerField(inputJawaban: $pengali2)
+                        AnswerField(inputJawaban: $pengali2,isDisabled: isDisbaled,isCorrect:jawaban.isDikali2)
                     }
                     
                     Image (systemName: "minus")
@@ -233,7 +257,7 @@ struct EqualizeDenominator: View {
                         Text("\(fraction.f2.denominator)")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         Image(systemName: "multiply")
-                        AnswerField(inputJawaban: $pengali2,isDisabled: isDisbaled)
+                        AnswerField(inputJawaban: $pengali2,isDisabled: isDisbaled,isCorrect:jawaban.isDikali2)
                     }
                 }
             }
@@ -249,6 +273,8 @@ struct DoCalculationFractionTimesFactor: View {
     @Binding var pembilang3:String
     @Binding var penyebut3:String
      var operand:String
+    var isDisabled:Bool = false
+     var jawaban:Jawaban
    
     
 //    var hasilTimesFactorFraction:FractionPair
@@ -294,14 +320,14 @@ struct DoCalculationFractionTimesFactor: View {
                 .padding(.horizontal)
             
             VStack(spacing: 4) {
-                AnswerField(inputJawaban: $pembilang3)
+                AnswerField(inputJawaban: $pembilang3,isDisabled:isDisabled,isCorrect: jawaban.isNumerator3)
               
                 Image(systemName: "minus")
                     .resizable()
                     .frame(width: 36, height: 2)
                     .padding(.vertical, 4)
                 
-                AnswerField(inputJawaban: $penyebut3)
+                AnswerField(inputJawaban: $penyebut3,isDisabled:isDisabled,isCorrect: jawaban.isDenominator3)
             }
         }
     }
@@ -314,11 +340,12 @@ struct DoCalculation: View {
     @Binding var penyebut2:String
     var  operand:String
     var isDisabled:Bool = false
+    var jawaban:Jawaban
     var body: some View {
         HStack {
             VStack(spacing: 4) {
                 HStack(spacing: 12) {
-                    AnswerField(inputJawaban: $pembilang1,isDisabled: isDisabled)
+                    AnswerField(inputJawaban: $pembilang1,isDisabled: isDisabled,isCorrect: jawaban.isNumerator1)
                 }
                 
                 Image(systemName: "minus")
@@ -326,7 +353,7 @@ struct DoCalculation: View {
                     .frame(width: 50, height: 2)
                     .padding(.vertical, 12)
                 HStack(spacing: 12) {
-                    AnswerField(inputJawaban: $penyebut1,isDisabled: isDisabled)
+                    AnswerField(inputJawaban: $penyebut1,isDisabled: isDisabled,isCorrect: jawaban.isDenominator1)
                 }
             }
             
@@ -336,7 +363,7 @@ struct DoCalculation: View {
             VStack{
                 VStack(spacing: 4) {
                     HStack(spacing: 12) {
-                        AnswerField(inputJawaban: $pembilang2,isDisabled: isDisabled)
+                        AnswerField(inputJawaban: $pembilang2,isDisabled: isDisabled,isCorrect: jawaban.isNumerator2)
                     }
                     
                     Image(systemName: "minus")
@@ -344,7 +371,7 @@ struct DoCalculation: View {
                         .frame(width: 50, height: 2)
                         .padding(.vertical, 12)
                     HStack(spacing: 12) {
-                        AnswerField(inputJawaban: $penyebut2,isDisabled: isDisabled)
+                        AnswerField(inputJawaban: $penyebut2,isDisabled: isDisabled,isCorrect: jawaban.isDenominator2)
                     }
                 }
             }
@@ -356,6 +383,8 @@ struct SimplifyFraction: View {
     @Binding var pembilang:String
     @Binding var penyebut:String
     @Binding var pembagi:String
+    var isDisabled : Bool = false
+    var jawaban : Jawaban
     
     var body: some View {
         HStack {
@@ -365,7 +394,7 @@ struct SimplifyFraction: View {
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundColor(Color("NavyText"))
                     Image(systemName: "divide")
-                    AnswerField(inputJawaban: $pembagi)
+                    AnswerField(inputJawaban: $pembagi,isDisabled: isDisabled,isCorrect: jawaban.isDibagi)
                 }
                 
                 Image(systemName: "minus")
@@ -378,7 +407,7 @@ struct SimplifyFraction: View {
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundColor(Color("NavyText"))
                     Image(systemName: "divide")
-                    AnswerField(inputJawaban: $pembagi)
+                    AnswerField(inputJawaban: $pembagi,isDisabled: isDisabled,isCorrect: jawaban.isDibagi)
                 }
             }
         }
@@ -514,10 +543,10 @@ struct QuestionScreen: View {
                     stepOneDone = false
                     stepThreeDone = false
                     stepSimplify = false
-                    isDisabledStep1.toggle()
-                    isDisabledStep2.toggle()
-                    isDisabledStep3.toggle()
-                    isDisabledStepSimplify.toggle()
+                    isDisabledStep1 = false
+                    isDisabledStep2 = false
+                    isDisabledStep3 = false
+                    isDisabledStepSimplify = false
                     
                     print(fractionSolutions.canBeSimplified)
                     if(solusiGenerate.isDenominatorEqual){
@@ -553,7 +582,7 @@ struct QuestionScreen: View {
                             Spacer()
                             
                             HStack {
-                                EqualizeDenominator(fraction: Soal.fractionPair, pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2,operand: operand,isDisbaled: isDisabledStep1)
+                                EqualizeDenominator(fraction: Soal.fractionPair, pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2,operand: operand,isDisbaled: isDisabledStep1,jawaban:jawaban)
                             }
                             
                             Spacer()
@@ -567,7 +596,7 @@ struct QuestionScreen: View {
                                 
                                 Spacer()
                                 
-                                DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2)
+                                DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2,jawaban:jawaban)
                                 Spacer()
                             }
                             
@@ -580,7 +609,7 @@ struct QuestionScreen: View {
                                 
                                 Spacer()
 
-                                DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand)
+                                DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
                                 Spacer()
                             }
                         }
@@ -592,7 +621,7 @@ struct QuestionScreen: View {
                                     .padding(.horizontal, 32)
                                 
                                 Spacer ()
-                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi)
+                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled:isDisabledStepSimplify,jawaban:jawaban)
                                 
                                 Spacer()
                             }
@@ -605,7 +634,7 @@ struct QuestionScreen: View {
                                 Spacer ()
                                 AnswerField1(inputJawaban: $jawaban.numerator4)
                                 
-                                Image (systemName: operand)
+                                Image (systemName: "minus")
                                     .resizable()
                                     .frame(width: 48, height: 2)
                                     .padding(.vertical, 12)
@@ -626,7 +655,7 @@ struct QuestionScreen: View {
                             
                             Spacer()
 
-                            DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand)
+                            DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
                             Spacer()
                         }
                         
@@ -636,7 +665,7 @@ struct QuestionScreen: View {
                                     .padding(.horizontal, 32)
                                 
                                 Spacer ()
-                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi)
+                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled: isDisabledStepSimplify,jawaban:jawaban)
                                 
                                 Spacer()
                             }
@@ -649,7 +678,7 @@ struct QuestionScreen: View {
                                 Spacer ()
                                 AnswerField1(inputJawaban: $jawaban.numerator4)
                                 
-                                Image (systemName: operand)
+                                Image (systemName: "minus")
                                     .resizable()
                                     .frame(width: 48, height: 2)
                                     .padding(.vertical, 12)
@@ -665,14 +694,14 @@ struct QuestionScreen: View {
             } else {
                
                 Spacer ()
-                AnswerField1(inputJawaban: $jawaban.numerator)
+                AnswerField1(inputJawaban: $jawaban.numerator,isCorrect:jawaban.isNumerator)
                 
                 Image (systemName: "minus")
                     .resizable()
                     .frame(width: 48, height: 2)
                     .padding(.vertical, 12)
                 
-                AnswerField1(inputJawaban: $jawaban.denominator)
+                AnswerField1(inputJawaban: $jawaban.denominator,isCorrect: jawaban.isDenominator)
                 Spacer()
             }
             
@@ -713,30 +742,29 @@ struct QuestionScreen: View {
                         isCheck = !isCheck
                         if !fractionSolutions.isDenominatorEqual{
                             if !stepOneDone {
-                                if(checkEqualizeFraction(fractionSolutions: fractionSolutions, jawaban:jawaban)){
+                                jawaban = checkEqualizeFraction(fractionSolutions: fractionSolutions, jawaban:jawaban)
+                                if(jawaban.isCheckEqualize){
                                     print("masuk")
                                     stepOneDone = !stepOneDone
                                     isDisabledStep1.toggle()
-                                }else{
-                                    showWrongAlert.toggle()
-                                    print("gamasuk")
+                                    
                                 }
                              }
-                            if stepOneDone && !stepTwoDone{
-                                if(checkCalculationTimesFactor(fractionSolutions: fractionSolutions, jawaban:jawaban)){
+                            else if stepOneDone && !stepTwoDone{
+                                jawaban = checkCalculationTimesFactor(fractionSolutions: fractionSolutions, jawaban:jawaban)
+                                if(jawaban.isCheckCalculationTimesFactor){
                                     print("masuk")
                                     stepTwoDone = !stepTwoDone
                                     isDisabledStep2.toggle()
-                                }else{
-                                    showWrongAlert.toggle()
-                                    print("gamasuk")
                                 }
+                                
                             }
                             // sekalian cek kalau dia gabisa di simplified lagi pindah ke review
-                            if stepTwoDone && !stepThreeDone{
-                                if(checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)){
+                            else if stepTwoDone && !stepThreeDone{
+                                jawaban = checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
+                                if(jawaban.isCheckCalculation){
                                     stepThreeDone = !stepThreeDone
-                                    
+                                    isDisabledStep3.toggle()
                                     // pindah ke review
                                     // atau tambah alert lagi??
                                     if(!fractionSolutions.canBeSimplified){
@@ -746,28 +774,27 @@ struct QuestionScreen: View {
                                         
                                     }
                                     
-                                }else{
-                                    print("gamasuk")
                                 }
                                 
                             }
-                            if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
+                           else  if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
                                 
                                 // pindah ke review
-                                if checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban){
+                                jawaban = checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban)
+                                if jawaban.isCheckSimplified{
                                     print("masuk")
                                     stepSimplify.toggle()
+                                    isDisabledStepSimplify.toggle()
                                 }
-                                else{
-                                    print("gamasuk")
-                                }
+                                
                                 // ke review screen
                                 
                             }
                             
-                            if stepSimplify{
+                            else if stepSimplify{
                                 // pindah ke review
-                                if checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode){
+                                jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
+                                if jawaban.isCheckFinalAnswerSimplified{
                                     print("hasil akhir  udah di simplify")
                                 }
                                 else{
@@ -777,7 +804,8 @@ struct QuestionScreen: View {
                         }
                         else{
                             if !stepThreeDone{
-                                if(checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)){
+                                jawaban = checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
+                                if(jawaban.isCheckCalculation){
                                     stepThreeDone = !stepThreeDone
                                     
                                     // pindah ke review
@@ -788,15 +816,14 @@ struct QuestionScreen: View {
                                         
                                     }
                                     print("masuk")
-                                }else{
-                                    print("gamasuk")
                                 }
                                 
                             }
-                            if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
+                           else if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
                                 
                                 // pindah ke review
-                                if checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban){
+                                jawaban = checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban)
+                                if jawaban.isCheckSimplified{
                                     print("masuk")
                                     stepSimplify.toggle()
                                 }
@@ -807,9 +834,10 @@ struct QuestionScreen: View {
                                 
                             }
                             
-                            if stepSimplify{
+                            else if stepSimplify{
                                 // pindah ke review
-                                if checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode){
+                                jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
+                                if jawaban.isCheckFinalAnswerSimplified{
                                     print("hasil akhir  udah di simplify")
                                 }
                                 else{
@@ -820,20 +848,20 @@ struct QuestionScreen: View {
                         
                     }else{
                         if fractionSolutions.canBeSimplified{
-                            if checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode:isStepMode){
+                            jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode:isStepMode)
+                            if jawaban.isCheckFinalAnswerSimplified{
                                 print("hasil akhir  udah di simplify pindah ke review")
                             }
                             else{
                                 print("gamasuk gagal hasil akbir")
                             }
                         }else if !fractionSolutions.canBeSimplified{
-                            if(checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)){
+                            jawaban = checkCalculationFraction(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
+                            if(jawaban.isCheckCalculation){
                                 // pindah ke review
                                 // atau tambah alert lagi??
                                 if(!fractionSolutions.canBeSimplified){
                                     print("selesai pindah ke review")
-                                    
-                                }else{
                                     
                                 }
                             }
