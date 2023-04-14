@@ -47,7 +47,7 @@ struct ReviewScreen: View {
     var fractionSolutions:FractionSolutions
     @Binding var isGoToReviewPage:Bool
     var soalPecahan:FractionPair
-    var operand:Operand
+    var operand:String
     var body: some View {
         NavigationView {
             VStack {

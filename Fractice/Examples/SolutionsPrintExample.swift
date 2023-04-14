@@ -17,7 +17,7 @@ struct SolutionsPrintExample: View {
     
     var fractionSolutions:FractionSolutions
     var soalPecahan:FractionPair
-    var operand:Operand
+    var operand:String
 //    var solution = generateSolutionSteps(f1: f1, f2: f2, operand: Operand.plus)
     var finalSolution = finalAnswer(f1: f1, f2: f2, operand: Operand.plus)
     
@@ -44,7 +44,7 @@ struct SolutionsPrintExample: View {
                         .foregroundColor(Color("NavyText"))
                 }
                 
-                Image(systemName: "plus")
+                Image(systemName: operand)
                     .padding(.horizontal)
                 
                 VStack{
@@ -97,7 +97,7 @@ struct SolutionsPrintExample: View {
                                 }
                             }
                             
-                            Image(systemName: "plus")
+                            Image(systemName: operand)
                                 .padding(.horizontal)
                             
                             VStack{
@@ -151,7 +151,7 @@ struct SolutionsPrintExample: View {
                                     .foregroundColor(Color("NavyText"))
                             }
                             
-                            Image(systemName: "plus")
+                            Image(systemName: operand)
                                 .padding(.horizontal)
                             
                             VStack(spacing: 4) {
@@ -288,7 +288,7 @@ struct SolutionsPrintExample: View {
                                     .foregroundColor(Color("NavyText"))
                             }
                             
-                            Image(systemName: "plus")
+                            Image(systemName: operand)
                                 .padding(.horizontal)
                             
                             VStack{

@@ -923,7 +923,7 @@ struct QuestionScreen: View {
                 .padding(.bottom, 32)
                 .navigationDestination(isPresented:$isGoToReviewPage){
                    
-                    ReviewScreen(fractionSolutions: fractionSolutions, isGoToReviewPage: $isGoToReviewPage,soalPecahan: Soal.fractionPair, operand:Soal.operand)
+                    ReviewScreen(fractionSolutions: fractionSolutions, isGoToReviewPage: $isGoToReviewPage,soalPecahan: Soal.fractionPair, operand:operand)
                         .navigationBarBackButtonHidden(true)
                 }
                 
