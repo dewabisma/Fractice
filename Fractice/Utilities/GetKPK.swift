@@ -8,21 +8,12 @@
 import Foundation
 
 func getKPK(num1:Int, num2:Int) -> Int {
-    var KPK: Int
+    var kpk: Int
+    let fpb = getFPB(num1: num1, num2: num2)
     
-    let smallerOne = Float(min(num1, num2))
-    let biggerOne = Float(max(num1, num2))
+    kpk = (num1 * num2) / fpb
     
-    let divResult = biggerOne / smallerOne
-    let isInteger = divResult.truncatingRemainder(dividingBy: 1) == 0
-    
-    if isInteger {
-        KPK = Int(smallerOne * divResult)
-    } else {
-        KPK = num1 * num2
-    }
-    
-    return KPK
+    return kpk
 }
 
 func calculateTimesFactor(num:Int, kpk:Int) -> Int {

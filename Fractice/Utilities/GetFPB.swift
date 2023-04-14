@@ -25,8 +25,8 @@ func getFactors(_ num:Int) -> [Int] {
     return factors
 }
 
-func getFPB(num1:Int, num2:Int) -> Int? {
-    var FPB:Int?
+func getFPB(num1:Int, num2:Int) -> Int {
+    var FPB:Int = 1
     var sameFactors:[Int] = []
     
     let factors1 = num1 < num2 ? getFactors(num1) : getFactors(num2)
