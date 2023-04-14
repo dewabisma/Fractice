@@ -10,7 +10,7 @@ import Foundation
 typealias FractionSolutions = (steps: [Any], isDenominatorEqual: Bool, canBeSimplified:Bool)
 typealias FinalAnswer = (operationResult:Fraction,operand:Operand)
 typealias TimesFactors = (t1:Int, t2:Int)
-typealias SimplifyProperties = (operationResult: Fraction, fpb: Int)
+typealias SimplifyProperties = (operationResult: Fraction, fpb: Int, result:Fraction)
 
 func generateSolutionSteps(f1:Fraction, f2:Fraction, operand:Operand) -> FractionSolutions {
     // index
@@ -62,8 +62,16 @@ func generateSolutionSteps(f1:Fraction, f2:Fraction, operand:Operand) -> Fractio
     let operationResult = calculateFractionsOperation(f1: fraction1, f2: fraction2, operand: operand)
     let fpb = getFPB(num1: operationResult.numerator, num2: operationResult.denominator)
     if let fpb = fpb {
+        let numeratorSimplified = operationResult.numerator / fpb
+        let denominatorSimplified = operationResult.denominator / fpb
+        let decimalSimplified = convertFractionToDecimal(numerator:numeratorSimplified, denominator: denominatorSimplified)
+        let answer:Fraction = Fraction(numerator:numeratorSimplified, denominator:denominatorSimplified, decimal: decimalSimplified)
+        
         canBeSimplified = true
-        steps.append((operationResult: operationResult, fpb: fpb))
+        
+       
+        
+        steps.append((operationResult: operationResult, fpb: fpb, result: answer))
     }
     
     return (steps, isDenominatorEqual, canBeSimplified)

@@ -44,35 +44,39 @@ struct StepHeading: View {
 }
 
 struct ReviewScreen: View {
+    var fractionSolutions:FractionSolutions
+    @Binding var isGoToReviewPage:Bool
+    var soalPecahan:FractionPair
+    var operand:Operand
     var body: some View {
         NavigationView {
             VStack {
                 // Button Atas
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "x.square.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(.red)
-                        
-                    }
-                    
-                    Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(.gray)
-                    }
-                }
-                .font(.system(size: 38))
-                .foregroundColor(.gray)
-                .padding(.horizontal, 32)
+//                HStack {
+//                    Button {
+//
+//                    } label: {
+//                        Image(systemName: "x.square.fill")
+//                            .resizable()
+//                            .frame(width: 32, height: 32)
+//                            .foregroundColor(.red)
+//
+//                    }
+//
+//                    Spacer()
+//
+//                    Button {
+//
+//                    } label: {
+//                        Image(systemName: "gearshape.fill")
+//                            .resizable()
+//                            .frame(width: 32, height: 32)
+//                            .foregroundColor(.gray)
+//                    }
+//                }
+//                .font(.system(size: 38))
+//                .foregroundColor(.gray)
+//                .padding(.horizontal, 32)
                 
                 // Heading
                 HStack {
@@ -100,23 +104,11 @@ struct ReviewScreen: View {
                 ScrollView {
                     // StepWrapper
                     VStack {
-                        SolutionsPrintExample()
+                        SolutionsPrintExample(fractionSolutions: fractionSolutions,soalPecahan:soalPecahan,operand:operand)
                         HStack {
                             Spacer()
                             
-                            Button {
-                                
-                            } label: {
-                                Text("NEXT")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 20))
-                                    .tracking(5)
-                                    .foregroundColor(Color .white)
-                            }
-                            .frame(width: 168, height: 48)
-                            .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
-                            .cornerRadius(30)
-                            .padding(.vertical, 32)
+                           
                             
                             Spacer()
                         }
@@ -213,7 +205,19 @@ struct ReviewScreen: View {
                     .padding(.horizontal, 32)
                     
                     HStack {
-                        Spacer()
+                        Button {
+                            isGoToReviewPage.toggle()
+                        } label: {
+                            Text("NEXT")
+                                .fontWeight(.bold)
+                                .font(.system(size: 20))
+                                .tracking(5)
+                                .foregroundColor(Color .white)
+                        }
+                        .frame(width: 168, height: 48)
+                        .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
+                        .cornerRadius(30)
+                        .padding(.vertical, 32)
 
                         
                     }
@@ -231,8 +235,8 @@ struct ReviewScreen: View {
         }
     }
 
-struct ReviewScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ReviewScreen()
-    }
-}
+//struct ReviewScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReviewScreen()
+//    }
+//}

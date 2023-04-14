@@ -434,6 +434,7 @@ struct QuestionScreen: View {
     @State private var Soal:soal
     @State private var fractionSolutions:FractionSolutions
     @State var operand:String
+    @State var isGoToReviewPage:Bool = false
     
     init() {
         let settingku = QuestionType(isBilangan: true,isCerita: false,isGambar: true)
@@ -450,29 +451,32 @@ struct QuestionScreen: View {
    
     var body: some View {
         VStack {
+//            NavigationLink(destination: ReviewScreen(), isActive: $GoToReviewPage){
+//                           EmptyView()
+//                       }
             HStack {
-                Button {
-                    showAlert = true
-                } label: {
-                    Image(systemName: "x.square.fill")
-                        .resizable()
-                        .frame(width: 27, height: 27)
-                        .foregroundColor(.red)
-                } .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Kamu yakin nih mau keluar?"),
-                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
-                        primaryButton: .default(
-                            Text("Keluar")
-                        ),
-                        secondaryButton: .destructive(
-                            Text("Batal"))
-                    )
-                }
+//                Button {
+//                    showAlert = true
+//                } label: {
+//                    Image(systemName: "x.square.fill")
+//                        .resizable()
+//                        .frame(width: 27, height: 27)
+//                        .foregroundColor(.red)
+//                } .alert(isPresented: $showAlert) {
+//                    Alert(
+//                        title: Text("Kamu yakin nih mau keluar?"),
+//                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
+//                        primaryButton: .default(
+//                            Text("Keluar")
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Batal"))
+//                    )
+//                }
                 
                 Spacer()
                 
-                Text ("Soal 1")
+                Text ("Soal")
                     .foregroundColor(Color("NavyText"))
                     .font(.system(size: 20, weight: .heavy, design: .rounded))
                 
@@ -524,7 +528,7 @@ struct QuestionScreen: View {
             .padding(.horizontal, 32)
             .padding(.vertical, 24)
             .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
-            .onChange(of: isPresented) { newValue in
+            .onChange(of: isPresented || isGoToReviewPage) { newValue in
                 
                 if !newValue {
                     
@@ -547,7 +551,7 @@ struct QuestionScreen: View {
                     isDisabledStep2 = false
                     isDisabledStep3 = false
                     isDisabledStepSimplify = false
-                    
+                    isStepMode = false
                     print(fractionSolutions.canBeSimplified)
                     if(solusiGenerate.isDenominatorEqual){
                         stepOneDone.toggle()
@@ -768,6 +772,7 @@ struct QuestionScreen: View {
                                     // pindah ke review
                                     // atau tambah alert lagi??
                                     if(!fractionSolutions.canBeSimplified){
+                                        isGoToReviewPage.toggle()
                                         print("selesai pindah ke review")
                                         
                                     }else{
@@ -785,6 +790,7 @@ struct QuestionScreen: View {
                                     print("masuk")
                                     stepSimplify.toggle()
                                     isDisabledStepSimplify.toggle()
+                                    
                                 }
                                 
                                 // ke review screen
@@ -796,6 +802,7 @@ struct QuestionScreen: View {
                                 jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
                                 if jawaban.isCheckFinalAnswerSimplified{
                                     print("hasil akhir  udah di simplify")
+                                    isGoToReviewPage.toggle()
                                 }
                                 else{
                                     print("gamasuk gagal hasil akbir")
@@ -808,11 +815,11 @@ struct QuestionScreen: View {
                                 if(jawaban.isCheckCalculation){
                                     stepThreeDone = !stepThreeDone
                                     
-                                    // pindah ke review
-                                    // atau tambah alert lagi??
+                                    // pindah ke revie
                                     if(!fractionSolutions.canBeSimplified){
                                         print("kelar gaada simplify")
     //                                    stepSimplify.toggle()
+                                        isGoToReviewPage.toggle()
                                         
                                     }
                                     print("masuk")
@@ -821,7 +828,7 @@ struct QuestionScreen: View {
                             }
                            else if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
                                 
-                                // pindah ke review
+                                
                                 jawaban = checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban)
                                 if jawaban.isCheckSimplified{
                                     print("masuk")
@@ -838,6 +845,7 @@ struct QuestionScreen: View {
                                 // pindah ke review
                                 jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode: isStepMode)
                                 if jawaban.isCheckFinalAnswerSimplified{
+                                    isGoToReviewPage.toggle()
                                     print("hasil akhir  udah di simplify")
                                 }
                                 else{
@@ -850,6 +858,7 @@ struct QuestionScreen: View {
                         if fractionSolutions.canBeSimplified{
                             jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode:isStepMode)
                             if jawaban.isCheckFinalAnswerSimplified{
+                                isGoToReviewPage.toggle()
                                 print("hasil akhir  udah di simplify pindah ke review")
                             }
                             else{
@@ -861,6 +870,7 @@ struct QuestionScreen: View {
                                 // pindah ke review
                                 // atau tambah alert lagi??
                                 if(!fractionSolutions.canBeSimplified){
+                                    isGoToReviewPage.toggle()
                                     print("selesai pindah ke review")
                                     
                                 }
@@ -884,20 +894,21 @@ struct QuestionScreen: View {
                     
                   
                 } label: {
-                    if isStepMode && stepTwoDone && !fractionSolutions.canBeSimplified {
+                    
+                    if isStepMode && stepTwoDone && !fractionSolutions.canBeSimplified || stepSimplify {
                         Text ("Jawab")
                             .fontWeight(.bold)
                             .font(.system(size: 20))
                             .tracking(5)
                             .foregroundColor(Color .white)
                     }
-                    else if isStepMode && !stepThreeDone {
-                        Text ("CEK")
-                            .fontWeight(.bold)
-                            .font(.system(size: 20))
-                            .tracking(5)
-                            .foregroundColor(Color .white)
-                    }
+                   else if isStepMode && !stepThreeDone || stepThreeDone && fractionSolutions.canBeSimplified {
+                       Text ("CEK")
+                           .fontWeight(.bold)
+                           .font(.system(size: 20))
+                           .tracking(5)
+                           .foregroundColor(Color .white)
+                   }
                     else {
                         Text ("JAWAB")
                             .fontWeight(.bold)
@@ -910,6 +921,11 @@ struct QuestionScreen: View {
                 .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
                 .cornerRadius(30)
                 .padding(.bottom, 32)
+                .navigationDestination(isPresented:$isGoToReviewPage){
+                   
+                    ReviewScreen(fractionSolutions: fractionSolutions, isGoToReviewPage: $isGoToReviewPage,soalPecahan: Soal.fractionPair, operand:Soal.operand)
+                        .navigationBarBackButtonHidden(true)
+                }
                 
                 Spacer()
                 
