@@ -78,6 +78,10 @@ func generateFractionPair(maxVal:Int = 10, includeNegative:Bool = false) -> Frac
     var fraction1 = generateFraction(maxVal: maxVal)
     var fraction2 = generateFraction(maxVal: maxVal)
     
+    if fraction1.numerator == fraction2.numerator {
+        fraction1.numerator += 1
+    }
+    
     if !includeNegative {
         let sortedFraction = sortFraction(operand: Operand.minus, fraction1: fraction1.decimal, fraction2: fraction2.decimal)
         
