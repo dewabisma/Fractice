@@ -61,18 +61,16 @@ func generateSolutionSteps(f1:Fraction, f2:Fraction, operand:Operand) -> Fractio
     // step 4(penyebut beda) step 3 (penyebut sama)
     let operationResult = calculateFractionsOperation(f1: fraction1, f2: fraction2, operand: operand)
     let fpb = getFPB(num1: operationResult.numerator, num2: operationResult.denominator)
-    if let fpb = fpb {
-        let numeratorSimplified = operationResult.numerator / fpb
-        let denominatorSimplified = operationResult.denominator / fpb
-        let decimalSimplified = convertFractionToDecimal(numerator:numeratorSimplified, denominator: denominatorSimplified)
-        let answer:Fraction = Fraction(numerator:numeratorSimplified, denominator:denominatorSimplified, decimal: decimalSimplified)
+    let numeratorSimplified = operationResult.numerator / fpb
+    let denominatorSimplified = operationResult.denominator / fpb
+    let decimalSimplified = convertFractionToDecimal(numerator:numeratorSimplified, denominator: denominatorSimplified)
+    let answer:Fraction = Fraction(numerator:numeratorSimplified, denominator:denominatorSimplified, decimal: decimalSimplified)
+    
+    
+    canBeSimplified = fpb != 1 
         
-        canBeSimplified = true
-        
-       
-        
-        steps.append((operationResult: operationResult, fpb: fpb, result: answer))
-    }
+    steps.append((operationResult: operationResult, fpb: fpb, result: answer))
+    
     
     return (steps, isDenominatorEqual, canBeSimplified)
 }
