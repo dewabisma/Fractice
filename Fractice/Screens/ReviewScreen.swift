@@ -217,7 +217,7 @@ struct ReviewScreen: View {
                         .frame(width: 168, height: 48)
                         .background(LinearGradient(colors: [Color("OrangeLight"), Color("OrangeDark")], startPoint: .top, endPoint: .bottom))
                         .cornerRadius(30)
-                        .padding(.vertical, 32)
+//                        .padding(.vertical, 10)
 
                         
                     }

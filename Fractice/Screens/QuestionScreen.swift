@@ -429,7 +429,7 @@ struct QuestionScreen: View {
     @State private var isDisabledStep2 = false
     @State private var isDisabledStep3 = false
     @State private var isDisabledStepSimplify = false
-    @State private var isPresented = false
+    @State private var isPresented = true
     @State private var setting:QuestionType
     @State private var Soal:soal
     @State private var fractionSolutions:FractionSolutions
@@ -499,7 +499,7 @@ struct QuestionScreen: View {
                         .resizable()
                         .frame(width: 27, height: 27)
                         .foregroundColor(.gray)
-                }.fullScreenCover(isPresented: $isPresented){
+                }.sheet(isPresented: $isPresented){
                     SettingScreen(isPresented: $isPresented, setting:$setting)
                 }
             }.padding(.horizontal, 32)
@@ -590,6 +590,8 @@ struct QuestionScreen: View {
                             }
                             
                             Spacer()
+                                .frame(height: 25)
+                            
                         }
                         if stepOneDone {
                             Group {
@@ -602,6 +604,7 @@ struct QuestionScreen: View {
                                 
                                 DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2,jawaban:jawaban)
                                 Spacer()
+                                    .frame(height: 25)
                             }
                             
                         }
@@ -615,6 +618,7 @@ struct QuestionScreen: View {
 
                                 DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
                                 Spacer()
+                                    .frame(height: 25)
                             }
                         }
                          // nanti disini dicek kalau dia bisa disederhanakan
@@ -628,6 +632,7 @@ struct QuestionScreen: View {
                                 SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled:isDisabledStepSimplify,jawaban:jawaban)
                                 
                                 Spacer()
+                                    .frame(height: 25)
                             }
                         }
                         if stepSimplify && fractionSolutions.canBeSimplified{
@@ -645,6 +650,7 @@ struct QuestionScreen: View {
                                 
                                 AnswerField1(inputJawaban: $jawaban.denominator4)
                                 Spacer()
+                                    .frame(height: 25)
                             }
                         }
                         
@@ -661,6 +667,7 @@ struct QuestionScreen: View {
 
                             DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
                             Spacer()
+                                .frame(height: 25)
                         }
                         
                         if stepThreeDone && fractionSolutions.canBeSimplified {
@@ -672,6 +679,7 @@ struct QuestionScreen: View {
                                 SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled: isDisabledStepSimplify,jawaban:jawaban)
                                 
                                 Spacer()
+                                    .frame(height: 25)
                             }
                         }
                         if stepSimplify && fractionSolutions.canBeSimplified{
@@ -689,6 +697,7 @@ struct QuestionScreen: View {
                                 
                                 AnswerField1(inputJawaban: $jawaban.denominator4)
                                 Spacer()
+                                    .frame(height: 25)
                             }
                         }
                     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ModeSoal:View {
     @Binding var vibrate:Bool
     var title:String
+    @Binding var setting:QuestionType
     var body: some View {
         HStack{
             Text(title)
@@ -20,8 +21,17 @@ struct ModeSoal:View {
             Spacer()
             
             Toggle(isOn: $vibrate) {
+                
             }
-            
+            .onChange(of: vibrate){newValue in
+                if !newValue{
+//                    print("masuk atas")
+                    if !setting.isGambar && !setting.isBilangan && !setting.isCerita{
+//                        print("masuk sini")
+                        vibrate = true
+                    }
+                }
+            }
             .frame(maxWidth: 50)
             .padding(10)
             
@@ -43,6 +53,7 @@ struct SettingScreen: View {
     var body: some View {
         ZStack {
             VStack (spacing:50) {
+                Spacer()
                 VStack {
                     Image("LionSmile")
                         .resizable()
@@ -66,34 +77,34 @@ struct SettingScreen: View {
                         .foregroundColor(Color("OrangeDark"))
                         .padding(.bottom,40)
                         
-                    ModeSoal(vibrate: $setting.isBilangan,title:"Soal Bilangan Pecahan")
+                    ModeSoal(vibrate: $setting.isBilangan,title:"Soal Bilangan Pecahan",setting:$setting)
                       
                     
-                    ModeSoal(vibrate: $setting.isCerita,title:"Soal Cerita Pecahan")
+                    ModeSoal(vibrate: $setting.isCerita,title:"Soal Cerita Pecahan",setting:$setting)
                     
                     
-                    ModeSoal(vibrate: $setting.isGambar,title:"Soal Gambar Pecahan")
+                    ModeSoal(vibrate: $setting.isGambar,title:"Soal Gambar Pecahan",setting:$setting)
                        
                    
                     
-                    Button("Mulai!") {
-                        if(!setting.isGambar && !setting.isCerita && !setting.isBilangan){
-                            isShowingAlert.toggle()
-                        }
-                        else{
-                            isPresented.toggle()
-                        }
-                    }
-                        .alert("Pilih salah satu opsi", isPresented: $isShowingAlert) {
-                                Button("OK", role: .cancel) { }
-                        }
-                        .tracking(5)
-                        .foregroundColor(.white)
-                        .fontWeight(.heavy)
-                        .frame(maxWidth: 132, maxHeight: 48)
-                        .background(LinearGradient(colors:[Color("OrangeDark"),Color("OrangeLight")], startPoint:.bottom, endPoint:.top))
-                        .cornerRadius(30)
-                        
+//                    Button("Mulai!") {
+//                        if(!setting.isGambar && !setting.isCerita && !setting.isBilangan){
+//                            isShowingAlert.toggle()
+//                        }
+//                        else{
+//                            isPresented.toggle()
+//                        }
+//                    }
+//                        .alert("Pilih salah satu opsi", isPresented: $isShowingAlert) {
+//                                Button("OK", role: .cancel) { }
+//                        }
+//                        .tracking(5)
+//                        .foregroundColor(.white)
+//                        .fontWeight(.heavy)
+//                        .frame(maxWidth: 132, maxHeight: 48)
+//                        .background(LinearGradient(colors:[Color("OrangeDark"),Color("OrangeLight")], startPoint:.bottom, endPoint:.top))
+//                        .cornerRadius(30)
+//                        
                     
                         
                 }
