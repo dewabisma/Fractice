@@ -228,7 +228,7 @@ struct SolutionsPrintExample: View {
                     }
 
                     if !fractionSolutions.isDenominatorEqual && !fractionSolutions.canBeSimplified && $0 == 2 {
-                        StepHeading(title: "Langkah 3: Final Answer")
+                        StepHeading(title: "Langkah 3: Hasil akhir")
                             .padding(.top, 24)
                         
 //                        FractionNotation(numerator: finalSolution.numerator, denominator: finalSolution.denominator)
@@ -250,7 +250,7 @@ struct SolutionsPrintExample: View {
                     }
 
                     if !fractionSolutions.isDenominatorEqual && fractionSolutions.canBeSimplified && $0 == 3 {
-                        StepHeading(title: "Langkah 4: Final Answer")
+                        StepHeading(title: "Langkah 4: Hasil akhir")
                             .padding(.top, 24)
                         
 //                        FractionNotation(numerator: finalSolution.numerator, denominator: finalSolution.denominator)
@@ -346,7 +346,7 @@ struct SolutionsPrintExample: View {
                     }
                     
                     if fractionSolutions.isDenominatorEqual && !fractionSolutions.canBeSimplified && $0 == 1 {
-                        StepHeading(title: "Langkah 3: Final Answer")
+                        StepHeading(title: "Langkah 3: Hasil akhir")
                             .padding(.top, 24)
                         
 //                        FractionNotation(numerator: finalSolution.numerator, denominator: finalSolution.denominator)
@@ -368,7 +368,7 @@ struct SolutionsPrintExample: View {
                     }
                     
                     if fractionSolutions.isDenominatorEqual && fractionSolutions.canBeSimplified && $0 == 2 {
-                        StepHeading(title: "Langkah 3: Final Answer")
+                        StepHeading(title: "Langkah 3: Hasil akhir")
                             .padding(.top, 24)
                         
 //                        FractionNotation(numerator: finalSolution.numerator, denominator: finalSolution.denominator)

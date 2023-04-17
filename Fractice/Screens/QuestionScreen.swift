@@ -597,7 +597,7 @@ struct QuestionScreen: View {
                             Group {
                                 // jangan lupa ganti nama ya
                                 //sama disable kalau dia kelar
-                                Steps(title: "Step 2: Hitunglah operasi aritmatika pecahan")
+                                Steps(title: "Step 2: Tuliskan hasil persamaan penyebut")
                                     .padding(.horizontal, 32)
                                 
                                 Spacer()
@@ -611,7 +611,7 @@ struct QuestionScreen: View {
                         
                         if stepTwoDone {
                             Group {
-                                Steps(title: "Step 3: hitung pecahan")
+                                Steps(title: "Step 3: Hitunglah operasi aritmatika pecahan")
                                     .padding(.horizontal, 32)
                                 
                                 Spacer()
@@ -905,7 +905,7 @@ struct QuestionScreen: View {
                 } label: {
                     
                     if isStepMode && stepTwoDone && !fractionSolutions.canBeSimplified || stepSimplify {
-                        Text ("Jawab")
+                        Text ("JAWAB")
                             .fontWeight(.bold)
                             .font(.system(size: 20))
                             .tracking(5)

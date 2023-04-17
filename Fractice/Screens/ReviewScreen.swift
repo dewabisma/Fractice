@@ -208,7 +208,7 @@ struct ReviewScreen: View {
                         Button {
                             isGoToReviewPage.toggle()
                         } label: {
-                            Text("NEXT")
+                            Text("LANJUT")
                                 .fontWeight(.bold)
                                 .font(.system(size: 20))
                                 .tracking(5)
