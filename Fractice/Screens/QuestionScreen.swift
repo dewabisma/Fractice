@@ -136,7 +136,6 @@ struct soalGambarView: View{
 }
 struct AnswerField: View {
     @Binding var inputJawaban: String
-    @FocusState var isFocused: Bool
     var isDisabled:Bool = false
     var isCorrect = true
     var body: some View {
@@ -145,16 +144,6 @@ struct AnswerField: View {
             "",
             text: $inputJawaban
         )
-        .focused($isFocused)
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                
-                Button("Done") {
-                    isFocused = false
-                }
-            }
-        }
         .multilineTextAlignment(.center)
         .frame(width: 40, height: 40)
         .overlay(
@@ -597,6 +586,7 @@ struct QuestionScreen: View {
                             
                             HStack {
                                 EqualizeDenominator(fraction: Soal.fractionPair, pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2,operand: operand,isDisbaled: isDisabledStep1,jawaban:jawaban)
+                                    .focused($isFocused)
                             }
                             
                             Spacer()
@@ -613,6 +603,7 @@ struct QuestionScreen: View {
                                 Spacer()
                                 
                                 DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2,jawaban:jawaban)
+                                    .focused($isFocused)
                                 Spacer()
                                     .frame(height: 25)
                             }
@@ -627,6 +618,7 @@ struct QuestionScreen: View {
                                 Spacer()
                                 
                                 DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
+                                    .focused($isFocused)
                                 Spacer()
                                     .frame(height: 25)
                             }
@@ -640,6 +632,7 @@ struct QuestionScreen: View {
                                 
                                 Spacer ()
                                 SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled:isDisabledStepSimplify,jawaban:jawaban)
+                                    .focused($isFocused)
                                 
                                 Spacer()
                                     .frame(height: 25)
@@ -652,6 +645,7 @@ struct QuestionScreen: View {
                                 
                                 Spacer ()
                                 AnswerField1(inputJawaban: $jawaban.numerator4)
+                                    .focused($isFocused)
                                 
                                 Image (systemName: "minus")
                                     .resizable()
@@ -659,6 +653,7 @@ struct QuestionScreen: View {
                                     .padding(.vertical, 12)
                                 
                                 AnswerField1(inputJawaban: $jawaban.denominator4)
+                                    .focused($isFocused)
                                 Spacer()
                                     .frame(height: 25)
                             }
@@ -676,6 +671,7 @@ struct QuestionScreen: View {
                             Spacer()
                             
                             DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
+                                .focused($isFocused)
                             Spacer()
                                 .frame(height: 25)
                         }
@@ -687,6 +683,7 @@ struct QuestionScreen: View {
                                 
                                 Spacer ()
                                 SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled: isDisabledStepSimplify,jawaban:jawaban)
+                                    .focused($isFocused)
                                 
                                 Spacer()
                                     .frame(height: 25)
