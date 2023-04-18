@@ -702,7 +702,7 @@ struct QuestionScreen: View {
                                     .focused($isFocused)
                                     
                                 
-                                Image (systemName: "minus")
+                                Image(systemName: "minus")
                                     .resizable()
                                     .frame(width: 48, height: 2)
                                     .padding(.vertical, 12)
