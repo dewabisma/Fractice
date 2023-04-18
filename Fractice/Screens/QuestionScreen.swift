@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 // numerator,denumorator -> jawaban utama
@@ -434,6 +435,7 @@ struct QuestionScreen: View {
     @State private var fractionSolutions:FractionSolutions
     @State var operand:String
     @State var isGoToReviewPage:Bool = false
+    @State private var keyboardHeight: CGFloat = 0
     
     @FocusState var isFocused
     
@@ -455,282 +457,291 @@ struct QuestionScreen: View {
             //            NavigationLink(destination: ReviewScreen(), isActive: $GoToReviewPage){
             //                           EmptyView()
             //                       }
-            HStack {
-                //                Button {
-                //                    showAlert = true
-                //                } label: {
-                //                    Image(systemName: "x.square.fill")
-                //                        .resizable()
-                //                        .frame(width: 27, height: 27)
-                //                        .foregroundColor(.red)
-                //                } .alert(isPresented: $showAlert) {
-                //                    Alert(
-                //                        title: Text("Kamu yakin nih mau keluar?"),
-                //                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
-                //                        primaryButton: .default(
-                //                            Text("Keluar")
-                //                        ),
-                //                        secondaryButton: .destructive(
-                //                            Text("Batal"))
-                //                    )
-                //                }
-                
-                Spacer()
-                Spacer().frame(width:25)
-                
-                Text ("Soal")
-                    .foregroundColor(Color("NavyText"))
-                    .font(.system(size: 20, weight: .heavy, design: .rounded))
-                
-                Spacer()
-                
-                Button {
-                    isPresented.toggle()
-                    isStepMode = false
-                    isCheck = false
-                    isCorrect = false
-                    showAlert = false
-                    stepOneDone = false
-                    stepTwoDone = false
-                    stepThreeDone = false
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                        .resizable()
-                        .frame(width: 27, height: 27)
-                        .foregroundColor(.gray)
-                }.sheet(isPresented: $isPresented){
-                    SettingScreen(isPresented: $isPresented, setting:$setting)
-                }
-            }.padding(.horizontal, 32)
-            
+           
             VStack {
-                if(Soal.questionType == .cerita){
-                    Text(.init(Soal.soalCerita!))
-                        .font(.system(size: 18,weight: .regular, design: .rounded))
-                        .lineSpacing(8)
-                        .foregroundColor(.white)
-                        .padding(.all, 24)
+                HStack {
+                    //                Button {
+                    //                    showAlert = true
+                    //                } label: {
+                    //                    Image(systemName: "x.square.fill")
+                    //                        .resizable()
+                    //                        .frame(width: 27, height: 27)
+                    //                        .foregroundColor(.red)
+                    //                } .alert(isPresented: $showAlert) {
+                    //                    Alert(
+                    //                        title: Text("Kamu yakin nih mau keluar?"),
+                    //                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
+                    //                        primaryButton: .default(
+                    //                            Text("Keluar")
+                    //                        ),
+                    //                        secondaryButton: .destructive(
+                    //                            Text("Batal"))
+                    //                    )
+                    //                }
                     
-                }
-                else if(Soal.questionType == .bilangan){
-                    soalPecahanView(fraction: $Soal.fractionPair,operand:$operand)
-                }
-                else if(Soal.questionType == .gambar){
-                    soalGambarView(fraction: $Soal.fractionPair,operand:$operand)
-                }
+                    Spacer()
+                    Spacer().frame(width:25)
+                    
+                    Text ("Soal")
+                        .foregroundColor(Color("NavyText"))
+                        .font(.system(size: 20, weight: .heavy, design: .rounded))
+                    
+                    Spacer()
+                    
+                    Button {
+                        isPresented.toggle()
+                        isStepMode = false
+                        isCheck = false
+                        isCorrect = false
+                        showAlert = false
+                        stepOneDone = false
+                        stepTwoDone = false
+                        stepThreeDone = false
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(width: 27, height: 27)
+                            .foregroundColor(.gray)
+                    }.sheet(isPresented: $isPresented){
+                        SettingScreen(isPresented: $isPresented, setting:$setting)
+                    }
+                }.padding(.horizontal, 32)
                 
-            }
-            .frame(maxWidth:.infinity)
-            .frame(height:270)
-            .background(Color ("PurpleLight"))
-            .cornerRadius(20)
-            .padding(.horizontal, 32)
-            .padding(.vertical, 24)
-            .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
-            .onChange(of: isPresented || isGoToReviewPage) { newValue in
-                
-                if !newValue {
-                    
-                    let settingGenerate = QuestionType(isBilangan: setting.isBilangan,isCerita: setting.isCerita,isGambar: setting.isGambar)
-                    let soalGenerate = generateSoal(setting: settingGenerate)
-                    let solusiGenerate = generateSolutionSteps(f1: soalGenerate.fractionPair.f1, f2: soalGenerate.fractionPair.f2, operand: soalGenerate.operand)
-                    let operasi = soalGenerate.operand.rawValue
-                    
-                    
-                    setting = settingGenerate
-                    Soal = soalGenerate
-                    fractionSolutions = solusiGenerate
-                    operand = operasi
-                    jawaban = Jawaban()
-                    stepTwoDone = false
-                    stepOneDone = false
-                    stepThreeDone = false
-                    stepSimplify = false
-                    isDisabledStep1 = false
-                    isDisabledStep2 = false
-                    isDisabledStep3 = false
-                    isDisabledStepSimplify = false
-                    isStepMode = false
-                    print(fractionSolutions.canBeSimplified)
-                    if(solusiGenerate.isDenominatorEqual){
-                        stepOneDone.toggle()
-                        stepTwoDone.toggle()
+                VStack {
+                    if(Soal.questionType == .cerita){
+                        Text(.init(Soal.soalCerita!))
+                            .font(.system(size: 18,weight: .regular, design: .rounded))
+                            .lineSpacing(8)
+                            .foregroundColor(.white)
+                            .padding(.all, 24)
                         
                     }
+                    else if(Soal.questionType == .bilangan){
+                        soalPecahanView(fraction: $Soal.fractionPair,operand:$operand)
+                    }
+                    else if(Soal.questionType == .gambar){
+                        soalGambarView(fraction: $Soal.fractionPair,operand:$operand)
+                    }
+                    
+                }
+                .frame(maxWidth:.infinity)
+                .frame(height:270)
+                .background(Color ("PurpleLight"))
+                .cornerRadius(20)
+                .padding(.horizontal, 32)
+                .padding(.vertical, 24)
+                .shadow(color: Color ("PurpleDark"), radius: 0.1, x:0, y:5)
+                .onChange(of: isPresented || isGoToReviewPage) { newValue in
+                    
+                    if !newValue {
+                        
+                        let settingGenerate = QuestionType(isBilangan: setting.isBilangan,isCerita: setting.isCerita,isGambar: setting.isGambar)
+                        let soalGenerate = generateSoal(setting: settingGenerate)
+                        let solusiGenerate = generateSolutionSteps(f1: soalGenerate.fractionPair.f1, f2: soalGenerate.fractionPair.f2, operand: soalGenerate.operand)
+                        let operasi = soalGenerate.operand.rawValue
+                        
+                        
+                        setting = settingGenerate
+                        Soal = soalGenerate
+                        fractionSolutions = solusiGenerate
+                        operand = operasi
+                        jawaban = Jawaban()
+                        stepTwoDone = false
+                        stepOneDone = false
+                        stepThreeDone = false
+                        stepSimplify = false
+                        isDisabledStep1 = false
+                        isDisabledStep2 = false
+                        isDisabledStep3 = false
+                        isDisabledStepSimplify = false
+                        isStepMode = false
+                        print(fractionSolutions.canBeSimplified)
+                        if(solusiGenerate.isDenominatorEqual){
+                            stepOneDone.toggle()
+                            stepTwoDone.toggle()
+                            
+                        }
+                    }
+                    
                 }
                 
-            }
-            
-            
-            HStack {
-                Text ("Jawaban")
-                    .foregroundColor(Color("OrangeText"))
-                    .font(.system(size: 20))
-                    .fontWeight(.heavy)
-                Spacer()
-            } .padding(.leading, 32)
-                .padding(.bottom, 20)
-            
-            if isStepMode {
-                ScrollView {
-                    if !fractionSolutions.isDenominatorEqual{
-                        // stepOneDone -> samakan penyebut
-                        // stepTwoDone -> hasil kali dari samakan penyebut
-                        // stepThreeDone -> hasil jumlah/kurang pecahan dari samakan penyebut
-                        //stepFourDone -> kalau bisa di sederhanakan
-                        Group {
-                            Steps(title: "Step 1: Samakan penyebut")
-                                .padding(.horizontal, 32)
-                            
-                            Spacer()
-                            
-                            HStack {
-                                EqualizeDenominator(fraction: Soal.fractionPair, pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2,operand: operand,isDisbaled: isDisabledStep1,jawaban:jawaban)
-                                    .focused($isFocused)
-                            }
-                            
-                            Spacer()
-                                .frame(height: 25)
-                            
-                        }
-                        if stepOneDone {
+                
+                HStack {
+                    Text ("Jawaban")
+                        .foregroundColor(Color("OrangeText"))
+                        .font(.system(size: 20))
+                        .fontWeight(.heavy)
+                    Spacer()
+                } .padding(.leading, 32)
+                    .padding(.bottom, 20)
+                
+                if isStepMode {
+                    ScrollView {
+                        if !fractionSolutions.isDenominatorEqual{
+                            // stepOneDone -> samakan penyebut
+                            // stepTwoDone -> hasil kali dari samakan penyebut
+                            // stepThreeDone -> hasil jumlah/kurang pecahan dari samakan penyebut
+                            //stepFourDone -> kalau bisa di sederhanakan
                             Group {
-                                // jangan lupa ganti nama ya
-                                //sama disable kalau dia kelar
-                                Steps(title: "Step 2: Tuliskan hasil persamaan penyebut")
+                                Steps(title: "Step 1: Samakan penyebut")
                                     .padding(.horizontal, 32)
                                 
                                 Spacer()
                                 
-                                DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2,jawaban:jawaban)
-                                    .focused($isFocused)
-                                Spacer()
-                                    .frame(height: 25)
-                            }
-                            
-                        }
-                        
-                        if stepTwoDone {
-                            Group {
-                                Steps(title: "Step 3: Hitunglah operasi aritmatika pecahan")
-                                    .padding(.horizontal, 32)
-                                
-                                Spacer()
-                                
-                                DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
-                                    .focused($isFocused)
-                                Spacer()
-                                    .frame(height: 25)
-                            }
-                        }
-                        // nanti disini dicek kalau dia bisa disederhanakan
-                        
-                        if stepThreeDone && fractionSolutions.canBeSimplified {
-                            Group {
-                                Steps(title: "Step 4: Cari hasil pembagi untuk sederhanakan  pecahan")
-                                    .padding(.horizontal, 32)
-                                
-                                Spacer ()
-                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled:isDisabledStepSimplify,jawaban:jawaban)
-                                    .focused($isFocused)
+                                HStack {
+                                    EqualizeDenominator(fraction: Soal.fractionPair, pengali1: $jawaban.dikali1, pengali2: $jawaban.dikali2,operand: operand,isDisbaled: isDisabledStep1,jawaban:jawaban)
+                                        .focused($isFocused)
+                                }
                                 
                                 Spacer()
                                     .frame(height: 25)
+                                
                             }
-                        }
-                        if stepSimplify && fractionSolutions.canBeSimplified{
-                            Group {
-                                Steps(title: "Step 5: Hitung Hasil sederhana")
-                                    .padding(.horizontal, 32)
-                                
-                                Spacer ()
-                                AnswerField1(inputJawaban: $jawaban.numerator4)
-                                    .focused($isFocused)
-                                
-                                Image (systemName: "minus")
-                                    .resizable()
-                                    .frame(width: 48, height: 2)
-                                    .padding(.vertical, 12)
-                                
-                                AnswerField1(inputJawaban: $jawaban.denominator4)
-                                    .focused($isFocused)
-                                Spacer()
-                                    .frame(height: 25)
-                            }
-                        }
-                        
-                    }
-                    else{
-                        // kalau dia penyebutnya sama tidak perlu step satu dan dua langsung done aja
-                        // insert nilai numerator
-                        
-                        Group {
-                            Steps(title: "Step 1: hitung pecahan")
-                                .padding(.horizontal, 32)
-                            
-                            Spacer()
-                            
-                            DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
-                                .focused($isFocused)
-                            Spacer()
-                                .frame(height: 25)
-                        }
-                        
-                        if stepThreeDone && fractionSolutions.canBeSimplified {
-                            Group {
-                                Steps(title: "Step 2: Cari hasil pembagi untuk sederhanakan  pecahan")
-                                    .padding(.horizontal, 32)
-                                
-                                Spacer ()
-                                SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled: isDisabledStepSimplify,jawaban:jawaban)
-                                    .focused($isFocused)
-                                
-                                Spacer()
-                                    .frame(height: 25)
-                            }
-                        }
-                        if stepSimplify && fractionSolutions.canBeSimplified{
-                            Group {
-                                Steps(title: "Step 3: Hitung Hasil sederhana")
-                                    .padding(.horizontal, 32)
-                                
-                                Spacer ()
-                                AnswerField1(inputJawaban: $jawaban.numerator4)
-                                    .focused($isFocused)
+                            if stepOneDone {
+                                Group {
+                                    // jangan lupa ganti nama ya
+                                    //sama disable kalau dia kelar
+                                    Steps(title: "Step 2: Tuliskan hasil persamaan penyebut")
+                                        .padding(.horizontal, 32)
                                     
-                                
-                                Image(systemName: "minus")
-                                    .resizable()
-                                    .frame(width: 48, height: 2)
-                                    .padding(.vertical, 12)
-                                
-                                AnswerField1(inputJawaban: $jawaban.denominator4)
-                                    .focused($isFocused)
+                                    Spacer()
                                     
+                                    DoCalculation(pembilang1: $jawaban.numerator1, pembilang2: $jawaban.numerator2, penyebut1: $jawaban.denominator1, penyebut2: $jawaban.denominator2,operand:operand,isDisabled:isDisabledStep2,jawaban:jawaban)
+                                        .focused($isFocused)
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                                
+                            }
+                            
+                            if stepTwoDone {
+                                Group {
+                                    Steps(title: "Step 3: Hitunglah operasi aritmatika pecahan")
+                                        .padding(.horizontal, 32)
+                                    
+                                    Spacer()
+                                    
+                                    DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
+                                        .focused($isFocused)
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                            }
+                            // nanti disini dicek kalau dia bisa disederhanakan
+                            
+                            if stepThreeDone && fractionSolutions.canBeSimplified {
+                                Group {
+                                    Steps(title: "Step 4: Cari hasil pembagi untuk sederhanakan  pecahan")
+                                        .padding(.horizontal, 32)
+                                    
+                                    Spacer ()
+                                    SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled:isDisabledStepSimplify,jawaban:jawaban)
+                                        .focused($isFocused)
+                                    
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                            }
+                            if stepSimplify && fractionSolutions.canBeSimplified{
+                                Group {
+                                    Steps(title: "Step 5: Hitung Hasil sederhana")
+                                        .padding(.horizontal, 32)
+                                    
+                                    Spacer ()
+                                    AnswerField1(inputJawaban: $jawaban.numerator4)
+                                        .focused($isFocused)
+                                    
+                                    Image (systemName: "minus")
+                                        .resizable()
+                                        .frame(width: 48, height: 2)
+                                        .padding(.vertical, 12)
+                                    
+                                    AnswerField1(inputJawaban: $jawaban.denominator4)
+                                        .focused($isFocused)
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                            }
+                            
+                        }
+                        else{
+                            // kalau dia penyebutnya sama tidak perlu step satu dan dua langsung done aja
+                            // insert nilai numerator
+                            
+                            Group {
+                                Steps(title: "Step 1: hitung pecahan")
+                                    .padding(.horizontal, 32)
+                                
+                                Spacer()
+                                
+                                DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
+                                    .focused($isFocused)
                                 Spacer()
                                     .frame(height: 25)
                             }
+                            
+                            if stepThreeDone && fractionSolutions.canBeSimplified {
+                                Group {
+                                    Steps(title: "Step 2: Cari hasil pembagi untuk sederhanakan  pecahan")
+                                        .padding(.horizontal, 32)
+                                    
+                                    Spacer ()
+                                    SimplifyFraction(pembilang: $jawaban.numerator3, penyebut: $jawaban.denominator3, pembagi: $jawaban.dibagi,isDisabled: isDisabledStepSimplify,jawaban:jawaban)
+                                        .focused($isFocused)
+                                    
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                            }
+                            if stepSimplify && fractionSolutions.canBeSimplified{
+                                Group {
+                                    Steps(title: "Step 3: Hitung Hasil sederhana")
+                                        .padding(.horizontal, 32)
+                                    
+                                    Spacer ()
+                                    AnswerField1(inputJawaban: $jawaban.numerator4)
+                                        .focused($isFocused)
+                                        
+                                    
+                                    Image(systemName: "minus")
+                                        .resizable()
+                                        .frame(width: 48, height: 2)
+                                        .padding(.vertical, 12)
+                                    
+                                    AnswerField1(inputJawaban: $jawaban.denominator4)
+                                        .focused($isFocused)
+                                        
+                                    Spacer()
+                                        .frame(height: 25)
+                                }
+                            }
                         }
+                        
+                        
                     }
+                } else {
                     
+                    Spacer ()
+                    AnswerField1(inputJawaban: $jawaban.numerator,isCorrect:jawaban.isNumerator)
+                        .focused($isFocused)
+                        
                     
+                    Image (systemName: "minus")
+                        .resizable()
+                        .frame(width: 48, height: 2)
+                        .padding(.vertical, 12)
+                    
+                    AnswerField1(inputJawaban: $jawaban.denominator,isCorrect: jawaban.isDenominator)
+                        .focused($isFocused)
+                        
+                    Spacer()
                 }
-            } else {
                 
-                Spacer ()
-                AnswerField1(inputJawaban: $jawaban.numerator,isCorrect:jawaban.isNumerator)
-                    .focused($isFocused)
-                    
-                
-                Image (systemName: "minus")
-                    .resizable()
-                    .frame(width: 48, height: 2)
-                    .padding(.vertical, 12)
-                
-                AnswerField1(inputJawaban: $jawaban.denominator,isCorrect: jawaban.isDenominator)
-                    .focused($isFocused)
-                    
-                Spacer()
+                HStack {}.padding(.bottom, keyboardHeight)
+            }
+            
+            .onReceive(Publishers.keyboardHeight) {
+                self.keyboardHeight = $0 - 150.0
             }
             
             Spacer()
@@ -877,7 +888,6 @@ struct QuestionScreen: View {
                                 }
                             }
                         }
-                        
                     }else{
                         if fractionSolutions.canBeSimplified{
                             jawaban = checkFinalAnswerSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban,isStepMode:isStepMode)
