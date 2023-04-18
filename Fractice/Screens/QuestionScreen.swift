@@ -136,6 +136,7 @@ struct soalGambarView: View{
 }
 struct AnswerField: View {
     @Binding var inputJawaban: String
+    @FocusState var isFocused: Bool
     var isDisabled:Bool = false
     var isCorrect = true
     var body: some View {
@@ -144,6 +145,16 @@ struct AnswerField: View {
             "",
             text: $inputJawaban
         )
+        .focused($isFocused)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                
+                Button("Done") {
+                    isFocused = false
+                }
+            }
+        }
         .multilineTextAlignment(.center)
         .frame(width: 40, height: 40)
         .overlay(
@@ -151,7 +162,7 @@ struct AnswerField: View {
                 .stroke(Color.gray, lineWidth: 2)
         )
         .background(RoundedRectangle(cornerRadius: 10).fill(isCorrect == true ? Color.white : Color.red))
-//        .foregroundColor(isCorrect == true ? Color.black : Color.red)
+        //        .foregroundColor(isCorrect == true ? Color.black : Color.red)
         .keyboardType(.numberPad)
         .disabled(isDisabled)
     }
@@ -163,7 +174,6 @@ struct AnswerField1: View {
     var color:Color = Color.gray
     
     var body: some View {
-        
         TextField(
             "",
             text: $inputJawaban
@@ -266,18 +276,18 @@ struct EqualizeDenominator: View {
 }
 
 struct DoCalculationFractionTimesFactor: View {
-     var pembilang1:String
-     var penyebut1:String
-     var pembilang2:String
-     var penyebut2:String
+    var pembilang1:String
+    var penyebut1:String
+    var pembilang2:String
+    var penyebut2:String
     @Binding var pembilang3:String
     @Binding var penyebut3:String
-     var operand:String
+    var operand:String
     var isDisabled:Bool = false
-     var jawaban:Jawaban
-   
+    var jawaban:Jawaban
     
-//    var hasilTimesFactorFraction:FractionPair
+    
+    //    var hasilTimesFactorFraction:FractionPair
     
     
     
@@ -287,7 +297,7 @@ struct DoCalculationFractionTimesFactor: View {
                 Text(pembilang1)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .foregroundColor(Color("NavyText"))
-              
+                
                 Image(systemName: "minus")
                     .resizable()
                     .frame(width: 36, height: 2)
@@ -305,7 +315,7 @@ struct DoCalculationFractionTimesFactor: View {
                 Text(pembilang2)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .foregroundColor(Color("NavyText"))
-              
+                
                 Image(systemName: "minus")
                     .resizable()
                     .frame(width: 36, height: 2)
@@ -321,7 +331,7 @@ struct DoCalculationFractionTimesFactor: View {
             
             VStack(spacing: 4) {
                 AnswerField(inputJawaban: $pembilang3,isDisabled:isDisabled,isCorrect: jawaban.isNumerator3)
-              
+                
                 Image(systemName: "minus")
                     .resizable()
                     .frame(width: 36, height: 2)
@@ -436,6 +446,8 @@ struct QuestionScreen: View {
     @State var operand:String
     @State var isGoToReviewPage:Bool = false
     
+    @FocusState var isFocused
+    
     init() {
         let settingku = QuestionType(isBilangan: true,isCerita: false,isGambar: true)
         let soalku = generateSoal(setting: settingku)
@@ -448,33 +460,34 @@ struct QuestionScreen: View {
         
         
     }
-   
+    
     var body: some View {
         VStack {
-//            NavigationLink(destination: ReviewScreen(), isActive: $GoToReviewPage){
-//                           EmptyView()
-//                       }
+            //            NavigationLink(destination: ReviewScreen(), isActive: $GoToReviewPage){
+            //                           EmptyView()
+            //                       }
             HStack {
-//                Button {
-//                    showAlert = true
-//                } label: {
-//                    Image(systemName: "x.square.fill")
-//                        .resizable()
-//                        .frame(width: 27, height: 27)
-//                        .foregroundColor(.red)
-//                } .alert(isPresented: $showAlert) {
-//                    Alert(
-//                        title: Text("Kamu yakin nih mau keluar?"),
-//                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
-//                        primaryButton: .default(
-//                            Text("Keluar")
-//                        ),
-//                        secondaryButton: .destructive(
-//                            Text("Batal"))
-//                    )
-//                }
+                //                Button {
+                //                    showAlert = true
+                //                } label: {
+                //                    Image(systemName: "x.square.fill")
+                //                        .resizable()
+                //                        .frame(width: 27, height: 27)
+                //                        .foregroundColor(.red)
+                //                } .alert(isPresented: $showAlert) {
+                //                    Alert(
+                //                        title: Text("Kamu yakin nih mau keluar?"),
+                //                        message: Text("\n Jika kamu keluar sekarang, kamu akan mengulang dari awal \n"),
+                //                        primaryButton: .default(
+                //                            Text("Keluar")
+                //                        ),
+                //                        secondaryButton: .destructive(
+                //                            Text("Batal"))
+                //                    )
+                //                }
                 
                 Spacer()
+                Spacer().frame(width:25)
                 
                 Text ("Soal")
                     .foregroundColor(Color("NavyText"))
@@ -491,9 +504,6 @@ struct QuestionScreen: View {
                     stepOneDone = false
                     stepTwoDone = false
                     stepThreeDone = false
-                   
-                    
-                    
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -511,7 +521,7 @@ struct QuestionScreen: View {
                         .lineSpacing(8)
                         .foregroundColor(.white)
                         .padding(.all, 24)
-                       
+                    
                 }
                 else if(Soal.questionType == .bilangan){
                     soalPecahanView(fraction: $Soal.fractionPair,operand:$operand)
@@ -519,7 +529,7 @@ struct QuestionScreen: View {
                 else if(Soal.questionType == .gambar){
                     soalGambarView(fraction: $Soal.fractionPair,operand:$operand)
                 }
-               
+                
             }
             .frame(maxWidth:.infinity)
             .frame(height:270)
@@ -559,7 +569,7 @@ struct QuestionScreen: View {
                         
                     }
                 }
-             
+                
             }
             
             
@@ -578,7 +588,7 @@ struct QuestionScreen: View {
                         // stepOneDone -> samakan penyebut
                         // stepTwoDone -> hasil kali dari samakan penyebut
                         // stepThreeDone -> hasil jumlah/kurang pecahan dari samakan penyebut
-                        //stepFourDone -> kalau bisa di sederhanakan 
+                        //stepFourDone -> kalau bisa di sederhanakan
                         Group {
                             Steps(title: "Step 1: Samakan penyebut")
                                 .padding(.horizontal, 32)
@@ -615,13 +625,13 @@ struct QuestionScreen: View {
                                     .padding(.horizontal, 32)
                                 
                                 Spacer()
-
+                                
                                 DoCalculationFractionTimesFactor(pembilang1: jawaban.numerator1, penyebut1: jawaban.denominator1, pembilang2: jawaban.numerator2, penyebut2: jawaban.denominator2,pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban:jawaban)
                                 Spacer()
                                     .frame(height: 25)
                             }
                         }
-                         // nanti disini dicek kalau dia bisa disederhanakan
+                        // nanti disini dicek kalau dia bisa disederhanakan
                         
                         if stepThreeDone && fractionSolutions.canBeSimplified {
                             Group {
@@ -664,7 +674,7 @@ struct QuestionScreen: View {
                                 .padding(.horizontal, 32)
                             
                             Spacer()
-
+                            
                             DoCalculationFractionTimesFactor(pembilang1: String(Soal.fractionPair.f1.numerator), penyebut1: String(Soal.fractionPair.f1.denominator), pembilang2: String(Soal.fractionPair.f2.numerator), penyebut2: String(Soal.fractionPair.f2.denominator),pembilang3: $jawaban.numerator3,penyebut3: $jawaban.denominator3,operand: operand,isDisabled:isDisabledStep3,jawaban: jawaban)
                             Spacer()
                                 .frame(height: 25)
@@ -689,6 +699,8 @@ struct QuestionScreen: View {
                                 
                                 Spacer ()
                                 AnswerField1(inputJawaban: $jawaban.numerator4)
+                                    .focused($isFocused)
+                                    
                                 
                                 Image (systemName: "minus")
                                     .resizable()
@@ -696,6 +708,8 @@ struct QuestionScreen: View {
                                     .padding(.vertical, 12)
                                 
                                 AnswerField1(inputJawaban: $jawaban.denominator4)
+                                    .focused($isFocused)
+                                    
                                 Spacer()
                                     .frame(height: 25)
                             }
@@ -705,9 +719,11 @@ struct QuestionScreen: View {
                     
                 }
             } else {
-               
+                
                 Spacer ()
                 AnswerField1(inputJawaban: $jawaban.numerator,isCorrect:jawaban.isNumerator)
+                    .focused($isFocused)
+                    
                 
                 Image (systemName: "minus")
                     .resizable()
@@ -715,6 +731,8 @@ struct QuestionScreen: View {
                     .padding(.vertical, 12)
                 
                 AnswerField1(inputJawaban: $jawaban.denominator,isCorrect: jawaban.isDenominator)
+                    .focused($isFocused)
+                    
                 Spacer()
             }
             
@@ -762,7 +780,7 @@ struct QuestionScreen: View {
                                     isDisabledStep1.toggle()
                                     
                                 }
-                             }
+                            }
                             else if stepOneDone && !stepTwoDone{
                                 jawaban = checkCalculationTimesFactor(fractionSolutions: fractionSolutions, jawaban:jawaban)
                                 if(jawaban.isCheckCalculationTimesFactor){
@@ -791,7 +809,7 @@ struct QuestionScreen: View {
                                 }
                                 
                             }
-                           else  if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
+                            else  if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
                                 
                                 // pindah ke review
                                 jawaban = checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban)
@@ -827,7 +845,7 @@ struct QuestionScreen: View {
                                     // pindah ke revie
                                     if(!fractionSolutions.canBeSimplified){
                                         print("kelar gaada simplify")
-    //                                    stepSimplify.toggle()
+                                        //                                    stepSimplify.toggle()
                                         isGoToReviewPage.toggle()
                                         
                                     }
@@ -835,7 +853,7 @@ struct QuestionScreen: View {
                                 }
                                 
                             }
-                           else if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
+                            else if stepThreeDone && !stepSimplify && fractionSolutions.canBeSimplified{
                                 
                                 
                                 jawaban = checkSimplified(fractionSolutions: fractionSolutions, jawaban: jawaban)
@@ -886,22 +904,22 @@ struct QuestionScreen: View {
                             }
                         }
                     }
-//
-//                    // Check step dari yg paling akhir ke awal
-//                    if stepThreeDone {
-//                        isCheck = !isCheck
-//                    }
-//
-//                    if stepTwoDone && !stepThreeDone {
-//                        stepThreeDone = !stepThreeDone
-//                    }
-//
-//                    if stepOneDone && !stepTwoDone {
-//                        stepTwoDone = !stepTwoDone
-//                    }
+                    //
+                    //                    // Check step dari yg paling akhir ke awal
+                    //                    if stepThreeDone {
+                    //                        isCheck = !isCheck
+                    //                    }
+                    //
+                    //                    if stepTwoDone && !stepThreeDone {
+                    //                        stepThreeDone = !stepThreeDone
+                    //                    }
+                    //
+                    //                    if stepOneDone && !stepTwoDone {
+                    //                        stepTwoDone = !stepTwoDone
+                    //                    }
                     // kalau penyebut beda
                     
-                  
+                    
                 } label: {
                     
                     if isStepMode && stepTwoDone && !fractionSolutions.canBeSimplified || stepSimplify {
@@ -911,13 +929,13 @@ struct QuestionScreen: View {
                             .tracking(5)
                             .foregroundColor(Color .white)
                     }
-                   else if isStepMode && !stepThreeDone || stepThreeDone && fractionSolutions.canBeSimplified {
-                       Text ("CEK")
-                           .fontWeight(.bold)
-                           .font(.system(size: 20))
-                           .tracking(5)
-                           .foregroundColor(Color .white)
-                   }
+                    else if isStepMode && !stepThreeDone || stepThreeDone && fractionSolutions.canBeSimplified {
+                        Text ("CEK")
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .tracking(5)
+                            .foregroundColor(Color .white)
+                    }
                     else {
                         Text ("JAWAB")
                             .fontWeight(.bold)
@@ -931,7 +949,7 @@ struct QuestionScreen: View {
                 .cornerRadius(30)
                 .padding(.bottom, 32)
                 .navigationDestination(isPresented:$isGoToReviewPage){
-                   
+                    
                     ReviewScreen(fractionSolutions: fractionSolutions, isGoToReviewPage: $isGoToReviewPage,soalPecahan: Soal.fractionPair, operand:operand)
                         .navigationBarBackButtonHidden(true)
                 }
@@ -944,6 +962,15 @@ struct QuestionScreen: View {
             .cornerRadius(20)
             .shadow(color: Color ("GrayBlur"), radius: 5, x:0, y:-3)
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                
+                Button("Done") {
+                    isFocused = false
+                }
+            }
+        }
         .ignoresSafeArea(.all)
         .frame(maxHeight: .infinity)
         .background(.white)
@@ -953,9 +980,9 @@ struct QuestionScreen: View {
 
 
 struct QuestionScreen_Previews: PreviewProvider {
-
+    
     static var previews: some View {
-            QuestionScreen()
+        QuestionScreen()
     }
 }
 
