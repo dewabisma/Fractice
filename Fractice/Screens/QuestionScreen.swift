@@ -478,16 +478,6 @@ struct QuestionScreen: View {
                     //                            Text("Batal"))
                     //                    )
                     //                }
-                    
-                    Spacer()
-                    Spacer().frame(width:25)
-                    
-                    Text ("Soal")
-                        .foregroundColor(Color("NavyText"))
-                        .font(.system(size: 20, weight: .heavy, design: .rounded))
-                    
-                    Spacer()
-                    
                     Button {
                         isPresented.toggle()
                         isStepMode = false
@@ -501,9 +491,46 @@ struct QuestionScreen: View {
                         Image(systemName: "gearshape.fill")
                             .resizable()
                             .frame(width: 27, height: 27)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color("NavyText"))
                     }.sheet(isPresented: $isPresented){
                         SettingScreen(isPresented: $isPresented, setting:$setting)
+                    }
+                    Spacer()
+//                    Spacer().frame(width:25)
+                    
+                    Text ("Soal")
+                        .foregroundColor(Color("NavyText"))
+                        .font(.system(size: 20, weight: .heavy, design: .rounded))
+                    
+                    Spacer()
+                
+                    Button{
+                       
+                        showAlert.toggle()
+                    }label:{
+                       
+                        Image(systemName: "arrow.right")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color("NavyText"))
+                    }
+                    .navigationDestination(isPresented:$isGoToReviewPage){
+                        
+                        ReviewScreen(fractionSolutions: fractionSolutions, isGoToReviewPage: $isGoToReviewPage,soalPecahan: Soal.fractionPair, operand:operand)
+                            .navigationBarBackButtonHidden(true)
+                    }  .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Apakah kamu ingin menyerah?"),
+                            
+                            primaryButton: .default(
+                                Text("Ya")
+                                ,action:{
+                                    isGoToReviewPage.toggle()
+                                }
+                            ),
+                            secondaryButton: .destructive(
+                                Text("Tidak"))
+                        )
                     }
                 }.padding(.horizontal, 32)
                 
@@ -572,6 +599,7 @@ struct QuestionScreen: View {
                         .font(.system(size: 20))
                         .fontWeight(.heavy)
                     Spacer()
+                    
                 } .padding(.leading, 32)
                     .padding(.bottom, 20)
                 
