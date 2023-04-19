@@ -79,7 +79,7 @@ func generateFractionPair(maxVal:Int = 10, includeNegative:Bool = false) -> Frac
     var fraction2 = generateFraction(maxVal: maxVal)
     
     if fraction1.numerator == fraction2.numerator {
-        fraction1.numerator += 1
+        fraction1 = (numerator: fraction1.numerator + 1, denominator: fraction1.denominator, decimal: fraction1.decimal)
     }
     
     if !includeNegative {
