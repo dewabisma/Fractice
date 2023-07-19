@@ -49,7 +49,6 @@ struct ReviewScreen: View {
     var soalPecahan:FractionPair
     var operand:String
     var body: some View {
-        NavigationView {
             VStack {
                 // Button Atas
 //                HStack {
@@ -224,15 +223,12 @@ struct ReviewScreen: View {
                     .frame(maxWidth:.infinity, maxHeight: 50)
                     .background(.white)
                     .cornerRadius(20)
-                    
                 }
                 .ignoresSafeArea(.all)
                 .frame(maxHeight: .infinity)
                 .background(.white)
                 .padding(.top, 24)
                 .padding(.bottom, 5)
-        }
-            
         }
     }
 
